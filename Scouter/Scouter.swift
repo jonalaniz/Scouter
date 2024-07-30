@@ -159,10 +159,6 @@ class Scouter {
         alert()
         cachedConversationID = conversationID
     }
-    
-    private func update(_ conversations: [ConversationPreview]) {
-        delegate?.updateMenu(folders: dataManager.mainFolders(), conversations: conversations)
-    }
         
     private func alert() {
         guard let url = Bundle.main.url(forResource: "alert", withExtension: "mp3") else {
@@ -204,7 +200,7 @@ extension Scouter: FreeScoutDataManagerDelegate {
         }
         
         DispatchQueue.main.async {
-            self.update(filteredConversations)
+            self.delegate?.updateMenu(folders: self.dataManager.mainFolders(), conversations: filteredConversations)
         }
     }
     
