@@ -83,6 +83,7 @@ class Scouter {
         
         var components = URLComponents(url: config.secret.url, resolvingAgainstBaseURL: false)!
         components.path += Endpoint.conversations.path
+        components.query = "pageSize=100"
         
         guard let url = components.url else { return }
         
@@ -95,7 +96,7 @@ class Scouter {
                 guard
                     let conversations = try? JSONDecoder().decode(ConversationContainer.self, from: data)
                 else { throw NetworkingError.unableToDecode}
-                
+                                
                 dataManager.set(conversations)
                 
                 await checkForNew(conversations)
