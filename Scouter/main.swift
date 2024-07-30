@@ -11,6 +11,5 @@ let app = NSApplication.shared
 let delegate = AppDelegate()
 
 app.delegate = delegate
-//app.mainMenu = menu
 
 _ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
