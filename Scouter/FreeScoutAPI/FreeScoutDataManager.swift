@@ -20,10 +20,9 @@ protocol FreeScoutDataManagerDelegate: AnyObject {
 class FreeScoutDataManager {
     weak var delegate: FreeScoutDataManagerDelegate?
     
+    let networking = Networking.shared
     var status = FreeScoutDataManagerStatus.needsFolders
-    
-    private var mailboxes = [Mailbox]()
-    
+        
     private var folders = [Folder]() {
         didSet {
             if status == .needsFolders {
@@ -39,21 +38,43 @@ class FreeScoutDataManager {
         delegate?.dataManagerStatusChanged(status)
     }
     
+    func unassignedTickets(in folders: Folders) -> Int {
+        var count = 0
+        
+        for (_, folder) in folders.container.folders.enumerated()
+        where folder.name == "Unassigned" {
+            count = folder.activeCount
+        }
+        
+        return count
+    }
+    
     func canFetchConversations() -> Bool {
         guard !folders.isEmpty else { return false }
         
         return true
     }
     
+    func fetchConversations(configuration: Configuration, url: URL) {
+        Task {
+            do {
+                let data = try await networking.fetch(url: url, APIKey: configuration.secret.key)
+                print("Conversations recieved")
+                
+                guard
+                    let conversation = try? JSONDecoder().decode(ConversationContainer.self, from: data)
+                else { throw NetworkingError.unableToDecode }
+                
+                set(conversation)
+            }
+        }
+    }
+    
     func set(_ folders: Folders) {
         self.folders = folders.container.folders.sorted(by: { $0.id < $1.id })
     }
-    
-    func set(_ mailboxes: MailboxContainer) {
-        self.mailboxes = mailboxes.embeddedMailboxes.mailboxes
-    }
-    
-    func set(_ conversations: ConversationContainer) {
+        
+    private func set(_ conversations: ConversationContainer) {
         self.conversationsPreviews = conversations.embeddedd.conversations
                 
         delegate?.updated(conversationsPreviews)

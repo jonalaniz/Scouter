@@ -65,9 +65,10 @@ class Scouter {
             timer = nil
         }
         
-        timer = Timer.scheduledTimer(timeInterval: interval.rawValue, target: self, selector: #selector(fetchData), userInfo: nil, repeats: true)
-        
-        timer?.fire()
+        DispatchQueue.main.async {
+            self.timer = Timer.scheduledTimer(timeInterval: interval.rawValue, target: self, selector: #selector(self.fetchData), userInfo: nil, repeats: true)
+            self.timer?.fire()
+        }
     }
     
     @objc private func fetchData() {
@@ -77,31 +78,20 @@ class Scouter {
     
     private func fetchConversations() {
         guard let config = configuration else {
-            spawnConfigWindow()
+            // here we need to create a state where we call the window, but only make it shown...
             return
         }
         
         var components = URLComponents(url: config.secret.url, resolvingAgainstBaseURL: false)!
         components.path += Endpoint.conversations.path
-        components.query = "pageSize=100"
+        components.query = "pageSize=200"
         
-        guard let url = components.url else { return }
-        
-        Task {
-            do {
-                let data = try await networking.fetch(url: url, APIKey: config.secret.key)
-                
-                print("Conversations recieved")
-                
-                guard
-                    let conversations = try? JSONDecoder().decode(ConversationContainer.self, from: data)
-                else { throw NetworkingError.unableToDecode}
-                                
-                dataManager.set(conversations)
-                
-                await checkForNew(conversations)
-            }
+        guard let url = components.url else {
+            // call that same configurator window to redo the configuration
+            return
         }
+        
+        dataManager.fetchConversations(configuration: config, url: url)
     }
     
     private func fetchFolders() {
@@ -139,9 +129,9 @@ class Scouter {
         }
     }
     
-    @MainActor private func checkForNew(_ conversations: ConversationContainer) {
+    private func checkForNew(_ conversations: [ConversationPreview]) {
         // Grab the latest conversation ID
-        guard let conversationID = conversations.embeddedd.conversations.first?.id else { return }
+        guard let conversationID = conversations.first?.id else { return }
         
         // Check if cached ID is not empty
         guard cachedConversationID != nil else {
@@ -187,6 +177,8 @@ class Scouter {
 
 extension Scouter: FreeScoutDataManagerDelegate {
     func updated(_ conversations: [ConversationPreview]) {
+        checkForNew(conversations)
+        
         var filteredConversations = [ConversationPreview]()
 
         for folder in dataManager.mainFolders() {
