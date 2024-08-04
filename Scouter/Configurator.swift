@@ -18,18 +18,6 @@ class Configurator {
         loadConfiguration()
     }
     
-    private func setupConfig() {
-        let config = Configuration(secret: Secret(url: URL(string: "https://help.bmhd.org")!,
-                                                  key: "a7c3c3aa705384a83d6f56edaef227d7"),
-                                   fetchInterval: .oneMinute,
-                                   mailboxID: 1)
-        do {
-            UserDefaults.standard.set(try PropertyListEncoder().encode(config), forKey: "configuration")
-        } catch {
-            fatalError("Could not encode configuration \(error)")
-        }
-    }
-    
     private func loadConfiguration() {
         guard
             let data = UserDefaults.standard.data(forKey: "configuration"),
