@@ -18,7 +18,6 @@ class ConfigurationViewController: NSViewController {
     let configurator = Configurator.shared
     var url: URL?
     var apiKey: String?
-    var fetchinterval = FetchInterval.oneMinute
     
     override func viewDidLoad() {
         super.viewDidLoad()

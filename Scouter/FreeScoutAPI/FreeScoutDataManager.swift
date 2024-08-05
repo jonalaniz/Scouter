@@ -38,23 +38,6 @@ class FreeScoutDataManager {
         delegate?.dataManagerStatusChanged(status)
     }
     
-    func unassignedTickets(in folders: Folders) -> Int {
-        var count = 0
-        
-        for (_, folder) in folders.container.folders.enumerated()
-        where folder.name == "Unassigned" {
-            count = folder.activeCount
-        }
-        
-        return count
-    }
-    
-    func canFetchConversations() -> Bool {
-        guard !folders.isEmpty else { return false }
-        
-        return true
-    }
-    
     func fetchConversations(configuration: Configuration, url: URL) {
         Task {
             do {
@@ -83,9 +66,4 @@ class FreeScoutDataManager {
     func mainFolders() -> [Folder] {
         return folders.filter { $0.userId == nil }
     }
-    
-    func userFolders() -> [Folder] {
-        return folders.filter { $0.userId != nil }
-    }
-    
 }

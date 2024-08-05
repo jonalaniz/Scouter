@@ -177,10 +177,6 @@ class Scouter {
         alert?.play()
     }
     
-    func freeScoutURL() -> URL? {
-        return configuration?.secret.url
-    }
-    
     func urlFor(conversation: Int) -> URL? {
         guard let config = configuration else { return nil }
                 

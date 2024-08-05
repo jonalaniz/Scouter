@@ -15,9 +15,7 @@ class Configurator {
     static let shared = Configurator()
     
     weak var delegate: ConfiguratorDelegate?
-    
-    private let networking = Networking.shared
-    
+        
     private var configuration: Configuration?
     
     private init() {
