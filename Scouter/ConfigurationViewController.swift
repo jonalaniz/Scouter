@@ -101,22 +101,8 @@ class ConfigurationViewController: NSViewController {
                     errorLabel.isHidden = false
                     return
                 }
+                self.handle(error: error)
                 
-                switch error {
-                case .invalidURL:
-                    errorLabel.stringValue = "Invalid URL"
-                case .noData:
-                    errorLabel.stringValue = "No Data"
-                case .unableToDecode:
-                    errorLabel.stringValue = "Unable to Decode"
-                case .invalidResponse:
-                    errorLabel.stringValue = "Invalid Response"
-                case .requestFailed:
-                    errorLabel.stringValue = "Request Failed"
-                case .unauthorized:
-                    errorLabel.stringValue = "Unauthorized"
-                }
-                errorLabel.isHidden = false
             }
         }
     }
@@ -131,5 +117,18 @@ class ConfigurationViewController: NSViewController {
         
         mailboxesPopUpButton.selectItem(withTag: selected)
         mailboxesPopUpButton.isEnabled = true
+    }
+    
+    private func handle(error: NetworkingError) {
+        switch error {
+        case .invalidURL: errorLabel.stringValue = "Invalid URL"
+        case .noData: errorLabel.stringValue = "No Data"
+        case .unableToDecode: errorLabel.stringValue = "Unable to Decode"
+        case .invalidResponse: errorLabel.stringValue = "Invalid Response"
+        case .requestFailed:  errorLabel.stringValue = "Request Failed"
+        case .unauthorized: errorLabel.stringValue = "Unauthorized"
+        }
+        
+        errorLabel.isHidden = false
     }
 }
