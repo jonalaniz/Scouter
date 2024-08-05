@@ -32,6 +32,10 @@ class Networking {
         }
         
         guard (200...299).contains(urlResponse.statusCode) else {
+            if urlResponse.statusCode == 401 {
+                throw NetworkingError.unauthorized
+            }
+
             throw NetworkingError.invalidResponse
         }
         
@@ -45,4 +49,5 @@ enum NetworkingError: Error {
     case unableToDecode
     case invalidResponse
     case requestFailed
+    case unauthorized
 }

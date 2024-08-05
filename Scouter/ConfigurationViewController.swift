@@ -96,6 +96,28 @@ class ConfigurationViewController: NSViewController {
                 self.apiKey = apiKey
                                 
                 configureMailboxesPopupButton(boxes: mailboxes.embeddedMailboxes.mailboxes)
+            } catch {
+                guard let error = error as? NetworkingError else {
+                    errorLabel.stringValue = error.localizedDescription
+                    errorLabel.isHidden = false
+                    return
+                }
+                
+                switch error {
+                case .invalidURL:
+                    errorLabel.stringValue = "Invalid URL"
+                case .noData:
+                    errorLabel.stringValue = "No Data"
+                case .unableToDecode:
+                    errorLabel.stringValue = "Unable to Decode"
+                case .invalidResponse:
+                    errorLabel.stringValue = "Invalid Response"
+                case .requestFailed:
+                    errorLabel.stringValue = "Request Failed"
+                case .unauthorized:
+                    errorLabel.stringValue = "Unauthorized"
+                }
+                errorLabel.isHidden = false
             }
         }
     }

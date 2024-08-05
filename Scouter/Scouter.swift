@@ -7,9 +7,15 @@
 
 import AppKit
 
-protocol ScouterDelegate: NSObject {
+enum ConfigurationIssue {
+    case invalidConfigruation
+    case noConfiguration
+}
+
+protocol ScouterDelegate: AnyObject {
     func active(tickets: Int)
     func updateMenu(folders: [Folder], conversations: [ConversationPreview])
+    func showConfigurationWindow(_ reason: ConfigurationIssue)
 }
 
 class Scouter {
@@ -27,7 +33,7 @@ class Scouter {
     
     private init() {
         guard let configuration = configurator.getConfiguration() else {
-            spawnConfigWindow()
+            delegate?.showConfigurationWindow(.noConfiguration)
             return
         }
         
@@ -36,23 +42,30 @@ class Scouter {
         start()
     }
     
-    private func spawnConfigWindow() {
-        // Here we have the user setup the app and then start
-    }
-    
     private func start() {
         guard configuration != nil else {
-            spawnConfigWindow()
+            delegate?.showConfigurationWindow(.noConfiguration)
             return
         }
         
+        configurator.delegate = self
         dataManager.delegate = self
         dataManager.getStatus()
     }
     
+    func restart() {
+        guard let configuration = configurator.getConfiguration() else {
+            delegate?.showConfigurationWindow(.noConfiguration)
+            return
+        }
+        
+        self.configuration = configuration
+        fetch(interval: configuration.fetchInterval)
+    }
+    
     private func beginTimer() {
         guard let config = configuration else {
-            spawnConfigWindow()
+            delegate?.showConfigurationWindow(.noConfiguration)
             return
         }
         
@@ -96,7 +109,7 @@ class Scouter {
     
     private func fetchFolders() {
         guard let config = configuration else {
-            spawnConfigWindow()
+            delegate?.showConfigurationWindow(.noConfiguration)
             return
         }
         
@@ -118,6 +131,9 @@ class Scouter {
                 await parse(folders)
             } catch {
                 print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.delegate?.showConfigurationWindow(.invalidConfigruation)
+                }
             }
         }
     }
@@ -202,5 +218,12 @@ extension Scouter: FreeScoutDataManagerDelegate {
         case .needsFolders: fetchFolders()
         case .ready: beginTimer()
         }
+    }
+}
+
+extension Scouter: ConfiguratorDelegate {
+    func configurationChanged() {
+        timer?.invalidate()
+        restart()
     }
 }

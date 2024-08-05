@@ -62,7 +62,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func about(sender: NSMenuItem) {
-        print(NSApp.windows)
         NSApp.orderFrontStandardAboutPanel()
     }
     
@@ -84,6 +83,10 @@ extension AppDelegate: ScouterDelegate {
     func active(tickets: Int) {
         statusItem.button?.imageHugsTitle = true
         statusItem.button?.title = " \(tickets)"
+    }
+    
+    func showConfigurationWindow(_ reason: ConfigurationIssue) {
+        windowController.showWindow(nil)
     }
     
     func updateMenu(folders: [Folder], conversations: [ConversationPreview]) {

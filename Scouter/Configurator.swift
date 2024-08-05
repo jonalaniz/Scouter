@@ -7,8 +7,14 @@
 
 import Foundation
 
+protocol ConfiguratorDelegate: AnyObject {
+    func configurationChanged()
+}
+
 class Configurator {
     static let shared = Configurator()
+    
+    weak var delegate: ConfiguratorDelegate?
     
     private let networking = Networking.shared
     
@@ -42,5 +48,6 @@ class Configurator {
     func saveConfiguration(_ configuration: Configuration) {
         self.configuration = configuration
         saveConfiguration()
+        delegate?.configurationChanged()
     }
 }
