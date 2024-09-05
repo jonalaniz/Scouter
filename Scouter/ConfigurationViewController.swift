@@ -14,7 +14,7 @@ class ConfigurationViewController: NSViewController {
     @IBOutlet var mailboxesPopUpButton: NSPopUpButton!
     @IBOutlet var fetchIntervalPopupButton: NSPopUpButton!
     
-    let apiService = FreeScoutAPIService.shared
+    let apiService = FreeScoutService.shared
     let configurator = Configurator.shared
     var url: URL?
     var apiKey: String?

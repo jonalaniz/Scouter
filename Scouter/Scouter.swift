@@ -26,7 +26,7 @@ class Scouter {
     var timer: Timer?
     weak var delegate: ScouterDelegate?
     
-    let apiService = FreeScoutAPIService.shared
+    let apiService = FreeScoutService.shared
         
     // TODO: Check on this and see if the initial guard ever gets tripped
     private init() {

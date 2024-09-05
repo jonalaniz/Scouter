@@ -1,5 +1,5 @@
 //
-//  FreeScoutDataManager.swift
+//  FreeScoutService.swift
 //  Scouter
 //
 //  Created by Jon Alaniz on 7/21/24.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-final class FreeScoutAPIService {
-    static let shared = FreeScoutAPIService()
+final class FreeScoutService {
+    static let shared = FreeScoutService()
     
     private let apiManager = APIManager.shared
     private let configurator = Configurator.shared

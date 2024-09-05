@@ -16,7 +16,7 @@
 		560591CC2C853316002C7D86 /* HTTPURLResponse+StatusCodeChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560591CB2C853316002C7D86 /* HTTPURLResponse+StatusCodeChecker.swift */; };
 		560591CE2C853328002C7D86 /* Error+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560591CD2C853328002C7D86 /* Error+Description.swift */; };
 		5629D5E82C39E8BF00F11FC3 /* String+Truncated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */; };
-		565466912C4D15630023B8EA /* FreeSoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565466902C4D15630023B8EA /* FreeSoutService.swift */; };
+		565466912C4D15630023B8EA /* FreeScoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565466902C4D15630023B8EA /* FreeScoutService.swift */; };
 		5694F79D2C57038C003C168A /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694F79C2C57038C003C168A /* Configurator.swift */; };
 		5694F7A12C571C52003C168A /* ConfigurationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5694F7A02C571C52003C168A /* ConfigurationWindow.xib */; };
 		5694F7A42C57212D003C168A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694F7A22C57212D003C168A /* ConfigurationViewController.swift */; };
@@ -48,7 +48,7 @@
 		560591CB2C853316002C7D86 /* HTTPURLResponse+StatusCodeChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCodeChecker.swift"; sourceTree = "<group>"; };
 		560591CD2C853328002C7D86 /* Error+Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Description.swift"; sourceTree = "<group>"; };
 		5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Truncated.swift"; sourceTree = "<group>"; };
-		565466902C4D15630023B8EA /* FreeSoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeSoutService.swift; sourceTree = "<group>"; };
+		565466902C4D15630023B8EA /* FreeScoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeScoutService.swift; sourceTree = "<group>"; };
 		5694F79C2C57038C003C168A /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		5694F7A02C571C52003C168A /* ConfigurationWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigurationWindow.xib; sourceTree = "<group>"; };
 		5694F7A22C57212D003C168A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				56CF0EF52C2D4C100061C544 /* Endpoint.swift */,
-				565466902C4D15630023B8EA /* FreeSoutService.swift */,
+				565466902C4D15630023B8EA /* FreeScoutService.swift */,
 				56CF0EF02C2D4BA70061C544 /* Models */,
 			);
 			path = FreeScoutAPI;
@@ -257,7 +257,7 @@
 				56C7C6552C2FFD41001F5173 /* ConversationContainer.swift in Sources */,
 				5629D5E82C39E8BF00F11FC3 /* String+Truncated.swift in Sources */,
 				560591CC2C853316002C7D86 /* HTTPURLResponse+StatusCodeChecker.swift in Sources */,
-				565466912C4D15630023B8EA /* FreeSoutService.swift in Sources */,
+				565466912C4D15630023B8EA /* FreeScoutService.swift in Sources */,
 				5694F79D2C57038C003C168A /* Configurator.swift in Sources */,
 				560591CE2C853328002C7D86 /* Error+Description.swift in Sources */,
 				560591C42C84F165002C7D86 /* HeaderKeyValue.swift in Sources */,
