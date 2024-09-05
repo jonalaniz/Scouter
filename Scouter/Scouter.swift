@@ -14,140 +14,119 @@ enum ConfigurationIssue {
 
 protocol ScouterDelegate: AnyObject {
     func active(tickets: Int)
-    func updateMenu(folders: [Folder], conversations: [ConversationPreview])
+    func offline()
     func showConfigurationWindow(_ reason: ConfigurationIssue)
+    func updateMenu(folders: [Folder], conversations: [ConversationPreview])
 }
 
 class Scouter {
     static let shared = Scouter()
     
-    let configurator = Configurator.shared
-    let networking = Networking.shared
-    var cachedConversationID: Int? // This should be saved
+    var cachedConversationID: Int?
     var timer: Timer?
     weak var delegate: ScouterDelegate?
     
-    let dataManager = FreeScoutDataManager()
-    
-    var configuration: Configuration?
-    
+    let apiService = FreeScoutAPIService.shared
+        
+    // TODO: Check on this and see if the initial guard ever gets tripped
     private init() {
-        guard let configuration = configurator.getConfiguration() else {
-            delegate?.showConfigurationWindow(.noConfiguration)
-            return
-        }
-        
-        self.configuration = configuration
-        
         start()
     }
     
     private func start() {
-        guard configuration != nil else {
+        guard
+            apiService.isConfigured(),
+            let interval = apiService.timeInterval()
+        else {
             delegate?.showConfigurationWindow(.noConfiguration)
             return
         }
         
-        configurator.delegate = self
-        dataManager.delegate = self
-        dataManager.getStatus()
+        setFetchTimer(at: interval)
     }
     
-    func restart() {
-        guard let configuration = configurator.getConfiguration() else {
-            delegate?.showConfigurationWindow(.noConfiguration)
-            return
-        }
-        
-        self.configuration = configuration
-        fetch(interval: configuration.fetchInterval)
-    }
-    
-    private func beginTimer() {
-        guard let config = configuration else {
-            delegate?.showConfigurationWindow(.noConfiguration)
-            return
-        }
-        
-        fetch(interval: config.fetchInterval)
-    }
-    
-    private func fetch(interval: FetchInterval) {
+    private func setFetchTimer(at interval: FetchInterval) {
         if timer != nil {
             timer?.invalidate()
-            timer = nil
         }
         
-        DispatchQueue.main.async {
-            self.timer = Timer.scheduledTimer(timeInterval: interval.rawValue, target: self, selector: #selector(self.fetchData), userInfo: nil, repeats: true)
-            self.timer?.fire()
-        }
+        self.timer = Timer.scheduledTimer(timeInterval: interval.rawValue,
+                                          target: self,
+                                          selector: #selector(updateConversations),
+                                          userInfo: nil,
+                                          repeats: true)
+        timer?.fire()
     }
     
-    @objc private func fetchData() {
-        fetchFolders()
-        fetchConversations()
-    }
-    
-    private func fetchConversations() {
-        guard let config = configuration else {
-            // here we need to create a state where we call the window, but only make it shown...
-            return
-        }
-        
-        var components = URLComponents(url: config.secret.url, resolvingAgainstBaseURL: false)!
-        components.path += Endpoint.conversations.path
-        components.query = "pageSize=200"
-        
-        guard let url = components.url else {
-            // call that same configurator window to redo the configuration
-            return
-        }
-        
-        dataManager.fetchConversations(configuration: config, url: url)
-    }
-    
-    private func fetchFolders() {
-        guard let config = configuration else {
-            delegate?.showConfigurationWindow(.noConfiguration)
-            return
-        }
-        
-        let url = URL(string: Endpoint.folders(config.mailboxID).path, relativeTo: config.secret.url)
-        guard let fetchURL = url?.absoluteURL else { return }
-
+    @objc private func updateConversations() {
         Task {
             do {
-                let data = try await networking.fetch(url: fetchURL, APIKey: config.secret.key)
+                let folders = try await apiService.fetchFolders()
+                await parseForActiveTickets(folders)
+                apiService.set(folders)
                 
-                print("Folders recieved")
+                let container = try await apiService.fetchConversations()
+                let conversations = container.container.conversations
                 
-                guard
-                    let folders = try? JSONDecoder().decode(Folders.self, from: data)
-                else { throw NetworkingError.unableToDecode }
+                checkForNew(conversations)
+                await filterAndUpdate(folders: folders.container.folders, conversations: conversations)
                 
-                dataManager.set(folders)
-                
-                await parse(folders)
+//                for convo in filteredConversations {
+//                    print("Subject: \(convo.subject), From: \(convo.createdBy.name())")
+//                    print("\tAssigned To: \(convo.assignee?.name())")
+//                    print(convo.preview)
+//                    print("----------------------------------------------------")
+//                }
             } catch {
-                print(error.localizedDescription)
-                DispatchQueue.main.async {
-                    self.delegate?.showConfigurationWindow(.invalidConfigruation)
+                guard let apiError = error as? APIManagerError else {
+                    print(error)
+                    return
                 }
+                
+                print(apiError.errorDescription)
             }
         }
     }
     
-    @MainActor private func parse(_ folders: Folders) {
+    func restart() {
+        guard let interval = apiService.timeInterval() else {
+            delegate?.showConfigurationWindow(.invalidConfigruation)
+            return
+        }
+        
+        setFetchTimer(at: interval)
+    }
+    
+    @MainActor private func parseForActiveTickets(_ folders: Folders) {
         for (_, folder) in folders.container.folders.enumerated()
             where folder.name == "Unassigned" {
             delegate?.active(tickets: folder.activeCount)
         }
     }
     
+    @MainActor private func filterAndUpdate(folders: [Folder],
+                                            conversations: [ConversationPreview]) {
+        var filteredConversations = [ConversationPreview]()
+
+        for folder in folders {
+            let filtered = conversations.filter { $0.folderId == folder.id }
+            
+            for conversation in filtered {
+                let index = filtered.firstIndex { $0.id == conversation.id }
+                if index == 5 { break }
+                
+                filteredConversations.append(conversation)
+            }
+        }
+        
+        self.delegate?.updateMenu(folders: apiService.mainFolders(),
+                                  conversations: filteredConversations)
+    }
+    
     private func checkForNew(_ conversations: [ConversationPreview]) {
         // Grab the latest conversation ID
         guard let conversationID = conversations.first?.id else { return }
+
         
         // Check if cached ID is not empty
         guard cachedConversationID != nil else {
@@ -178,42 +157,11 @@ class Scouter {
     }
     
     func urlFor(conversation: Int) -> URL? {
-        guard let config = configuration else { return nil }
-                
-        var components = URLComponents(url: config.secret.url, resolvingAgainstBaseURL: false)!
-        components.path += "/conversation/\(conversation)"
-        
-        return components.url
-    }
-}
-
-extension Scouter: FreeScoutDataManagerDelegate {
-    func updated(_ conversations: [ConversationPreview]) {
-        checkForNew(conversations)
-        
-        var filteredConversations = [ConversationPreview]()
-
-        for folder in dataManager.mainFolders() {
-            let filtered = conversations.filter { $0.folderId == folder.id }
-            
-            for conversation in filtered {
-                let index = filtered.firstIndex { $0.id == conversation.id }
-                if index == 5 { break }
-                
-                filteredConversations.append(conversation)
-            }
-        }
-        
-        DispatchQueue.main.async {
-            self.delegate?.updateMenu(folders: self.dataManager.mainFolders(), conversations: filteredConversations)
-        }
+        return apiService.urlFor(conversation)
     }
     
-    func dataManagerStatusChanged(_ status: FreeScoutDataManagerStatus) {
-        switch status {
-        case .needsFolders: fetchFolders()
-        case .ready: beginTimer()
-        }
+    private func errorHandler() {
+        // TODO: Handle errors and show configuration window
     }
 }
 

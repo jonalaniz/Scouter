@@ -85,6 +85,10 @@ extension AppDelegate: ScouterDelegate {
         statusItem.button?.title = " \(tickets)"
     }
     
+    func offline() {
+        statusItem.button?.title = "Offline"
+    }
+    
     func showConfigurationWindow(_ reason: ConfigurationIssue) {
         windowController.showWindow(nil)
     }

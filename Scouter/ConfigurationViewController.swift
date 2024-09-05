@@ -14,7 +14,7 @@ class ConfigurationViewController: NSViewController {
     @IBOutlet var mailboxesPopUpButton: NSPopUpButton!
     @IBOutlet var fetchIntervalPopupButton: NSPopUpButton!
     
-    let networking = Networking.shared
+    let apiService = FreeScoutAPIService.shared
     let configurator = Configurator.shared
     var url: URL?
     var apiKey: String?
@@ -83,26 +83,23 @@ class ConfigurationViewController: NSViewController {
         let mailboxURL = URL(string: Endpoint.mailbox.path, relativeTo: url)
         guard let fetchURL = mailboxURL else { return }
         
+        // TODO: Redo this mailbox fetch in the new APIService
         Task {
             do {
-                let data = try await networking.fetch(url: fetchURL, APIKey: apiKey)
-                                
-                guard
-                    let mailboxes = try? JSONDecoder().decode(MailboxContainer.self, from: data)
-                else { throw NetworkingError.unableToDecode }
+                let mailboxes = try await apiService.fetchMailboxes(key: apiKey, url: url)
                 
                 self.url = url
                 self.apiKey = apiKey
-                                
+                
                 configureMailboxesPopupButton(boxes: mailboxes.embeddedMailboxes.mailboxes)
             } catch {
-                guard let error = error as? NetworkingError else {
+                guard let error = error as? APIManagerError else {
                     errorLabel.stringValue = error.localizedDescription
                     errorLabel.isHidden = false
                     return
                 }
-                self.handle(error: error)
                 
+                self.handle(error: error)
             }
         }
     }
@@ -119,16 +116,18 @@ class ConfigurationViewController: NSViewController {
         mailboxesPopUpButton.isEnabled = true
     }
     
-    private func handle(error: NetworkingError) {
-        switch error {
-        case .invalidURL: errorLabel.stringValue = "Invalid URL"
-        case .noData: errorLabel.stringValue = "No Data"
-        case .unableToDecode: errorLabel.stringValue = "Unable to Decode"
-        case .invalidResponse: errorLabel.stringValue = "Invalid Response"
-        case .requestFailed:  errorLabel.stringValue = "Request Failed"
-        case .unauthorized: errorLabel.stringValue = "Unauthorized"
-        }
-        
-        errorLabel.isHidden = false
+    private func handle(error: APIManagerError) {
+        // TODO: Handle these errors
+        print(error.errorDescription)
+//        switch error {
+//        case .invalidURL: errorLabel.stringValue = "Invalid URL"
+//        case .noData: errorLabel.stringValue = "No Data"
+//        case .unableToDecode: errorLabel.stringValue = "Unable to Decode"
+//        case .invalidResponse: errorLabel.stringValue = "Invalid Response"
+//        case .requestFailed:  errorLabel.stringValue = "Request Failed"
+//        case .unauthorized: errorLabel.stringValue = "Unauthorized"
+//        }
+//        
+//        errorLabel.isHidden = false
     }
 }

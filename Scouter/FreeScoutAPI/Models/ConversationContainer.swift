@@ -7,23 +7,28 @@
 
 import Foundation
 
-struct ConversationContainer: Decodable {
-    let embeddedd: EmbeddedConversations
+struct ConversationContainer: Codable {
+    let container: ConversationsContainer
     let page: Page
 
     enum CodingKeys: String, CodingKey {
-        case embedded = "_embedded"
+        case container = "_embedded"
         case page
     }
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.embeddedd = try container.decode(EmbeddedConversations.self, forKey: .embedded)
-        self.page = try container.decode(Page.self, forKey: .page)
+    
+    init(container: ConversationsContainer, page: Page) {
+        self.container = container
+        self.page = page
     }
+    
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        self.embeddedd = try container.decode(EmbeddedConversations.self, forKey: .embedded)
+//        self.page = try container.decode(Page.self, forKey: .page)
+//    }
 }
 
-struct EmbeddedConversations: Codable {
+struct ConversationsContainer: Codable {
     let conversations: [ConversationPreview]
 }
 

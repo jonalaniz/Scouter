@@ -7,8 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		560591BC2C84EF0A002C7D86 /* ServiceMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560591BB2C84EF0A002C7D86 /* ServiceMethod.swift */; };
+		560591BE2C84EF3F002C7D86 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560591BD2C84EF3F002C7D86 /* APIManager.swift */; };
+		560591C02C84EF8A002C7D86 /* Managable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560591BF2C84EF8A002C7D86 /* Managable.swift */; };
+		560591C22C84F01C002C7D86 /* APIManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560591C12C84F01C002C7D86 /* APIManagerError.swift */; };
+		560591C42C84F165002C7D86 /* HeaderKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560591C32C84F165002C7D86 /* HeaderKeyValue.swift */; };
+		560591C62C84F269002C7D86 /* URLRequest+Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560591C52C84F269002C7D86 /* URLRequest+Headers.swift */; };
+		560591CC2C853316002C7D86 /* HTTPURLResponse+StatusCodeChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560591CB2C853316002C7D86 /* HTTPURLResponse+StatusCodeChecker.swift */; };
+		560591CE2C853328002C7D86 /* Error+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560591CD2C853328002C7D86 /* Error+Description.swift */; };
 		5629D5E82C39E8BF00F11FC3 /* String+Truncated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */; };
-		565466912C4D15630023B8EA /* FreeScoutDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565466902C4D15630023B8EA /* FreeScoutDataManager.swift */; };
+		565466912C4D15630023B8EA /* FreeSoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565466902C4D15630023B8EA /* FreeSoutService.swift */; };
 		5694F79D2C57038C003C168A /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694F79C2C57038C003C168A /* Configurator.swift */; };
 		5694F7A12C571C52003C168A /* ConfigurationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5694F7A02C571C52003C168A /* ConfigurationWindow.xib */; };
 		5694F7A42C57212D003C168A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694F7A22C57212D003C168A /* ConfigurationViewController.swift */; };
@@ -27,13 +35,20 @@
 		56CF0EF42C2D4BD10061C544 /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF0EF32C2D4BD10061C544 /* TimeFrame.swift */; };
 		56CF0EF62C2D4C100061C544 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF0EF52C2D4C100061C544 /* Endpoint.swift */; };
 		56CF0EF82C2D502A0061C544 /* Scouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF0EF72C2D502A0061C544 /* Scouter.swift */; };
-		56CF0EFA2C2D50520061C544 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF0EF92C2D50520061C544 /* Networking.swift */; };
 		56CF0EFC2C2DB3BE0061C544 /* Folders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF0EFB2C2DB3BE0061C544 /* Folders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		560591BB2C84EF0A002C7D86 /* ServiceMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMethod.swift; sourceTree = "<group>"; };
+		560591BD2C84EF3F002C7D86 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		560591BF2C84EF8A002C7D86 /* Managable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managable.swift; sourceTree = "<group>"; };
+		560591C12C84F01C002C7D86 /* APIManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerError.swift; sourceTree = "<group>"; };
+		560591C32C84F165002C7D86 /* HeaderKeyValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderKeyValue.swift; sourceTree = "<group>"; };
+		560591C52C84F269002C7D86 /* URLRequest+Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Headers.swift"; sourceTree = "<group>"; };
+		560591CB2C853316002C7D86 /* HTTPURLResponse+StatusCodeChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCodeChecker.swift"; sourceTree = "<group>"; };
+		560591CD2C853328002C7D86 /* Error+Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Description.swift"; sourceTree = "<group>"; };
 		5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Truncated.swift"; sourceTree = "<group>"; };
-		565466902C4D15630023B8EA /* FreeScoutDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeScoutDataManager.swift; sourceTree = "<group>"; };
+		565466902C4D15630023B8EA /* FreeSoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeSoutService.swift; sourceTree = "<group>"; };
 		5694F79C2C57038C003C168A /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		5694F7A02C571C52003C168A /* ConfigurationWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigurationWindow.xib; sourceTree = "<group>"; };
 		5694F7A22C57212D003C168A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +72,6 @@
 		56CF0EF32C2D4BD10061C544 /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
 		56CF0EF52C2D4C100061C544 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		56CF0EF72C2D502A0061C544 /* Scouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scouter.swift; sourceTree = "<group>"; };
-		56CF0EF92C2D50520061C544 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		56CF0EFB2C2DB3BE0061C544 /* Folders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +86,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		560591BA2C84EEE0002C7D86 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				560591BD2C84EF3F002C7D86 /* APIManager.swift */,
+				560591C12C84F01C002C7D86 /* APIManagerError.swift */,
+				560591CD2C853328002C7D86 /* Error+Description.swift */,
+				560591C32C84F165002C7D86 /* HeaderKeyValue.swift */,
+				560591CB2C853316002C7D86 /* HTTPURLResponse+StatusCodeChecker.swift */,
+				560591BF2C84EF8A002C7D86 /* Managable.swift */,
+				560591BB2C84EF0A002C7D86 /* ServiceMethod.swift */,
+				560591C52C84F269002C7D86 /* URLRequest+Headers.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		56C7C65F2C3019B4001F5173 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,18 +141,19 @@
 		56CF0ED92C2C0BCA0061C544 /* Scouter */ = {
 			isa = PBXGroup;
 			children = (
-				5694F79C2C57038C003C168A /* Configurator.swift */,
-				5694F7A02C571C52003C168A /* ConfigurationWindow.xib */,
-				5694F7A22C57212D003C168A /* ConfigurationViewController.swift */,
 				56C7C6522C2E5923001F5173 /* alert.mp3 */,
 				56CF0EDA2C2C0BCA0061C544 /* AppDelegate.swift */,
-				5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */,
-				56CF0EF72C2D502A0061C544 /* Scouter.swift */,
 				56CF0EDE2C2C0BCC0061C544 /* Assets.xcassets */,
-				56C7C6632C301A3B001F5173 /* Resources */,
+				5694F7A22C57212D003C168A /* ConfigurationViewController.swift */,
+				5694F7A02C571C52003C168A /* ConfigurationWindow.xib */,
+				5694F79C2C57038C003C168A /* Configurator.swift */,
 				56CF0EEB2C2CBD190061C544 /* FreeScoutAPI */,
 				56CF0EE92C2C10B00061C544 /* main.swift */,
+				560591BA2C84EEE0002C7D86 /* Networking */,
+				56C7C6632C301A3B001F5173 /* Resources */,
 				56CF0EE32C2C0BCC0061C544 /* Scouter.entitlements */,
+				56CF0EF72C2D502A0061C544 /* Scouter.swift */,
+				5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */,
 			);
 			path = Scouter;
 			sourceTree = "<group>";
@@ -132,9 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				56CF0EF52C2D4C100061C544 /* Endpoint.swift */,
-				565466902C4D15630023B8EA /* FreeScoutDataManager.swift */,
+				565466902C4D15630023B8EA /* FreeSoutService.swift */,
 				56CF0EF02C2D4BA70061C544 /* Models */,
-				56CF0EF92C2D50520061C544 /* Networking.swift */,
 			);
 			path = FreeScoutAPI;
 			sourceTree = "<group>";
@@ -227,11 +256,17 @@
 				56CF0EED2C2D4AFE0061C544 /* MailboxContainer.swift in Sources */,
 				56C7C6552C2FFD41001F5173 /* ConversationContainer.swift in Sources */,
 				5629D5E82C39E8BF00F11FC3 /* String+Truncated.swift in Sources */,
-				56CF0EFA2C2D50520061C544 /* Networking.swift in Sources */,
-				565466912C4D15630023B8EA /* FreeScoutDataManager.swift in Sources */,
+				560591CC2C853316002C7D86 /* HTTPURLResponse+StatusCodeChecker.swift in Sources */,
+				565466912C4D15630023B8EA /* FreeSoutService.swift in Sources */,
 				5694F79D2C57038C003C168A /* Configurator.swift in Sources */,
+				560591CE2C853328002C7D86 /* Error+Description.swift in Sources */,
+				560591C42C84F165002C7D86 /* HeaderKeyValue.swift in Sources */,
+				560591BE2C84EF3F002C7D86 /* APIManager.swift in Sources */,
 				56C7C6642C301A3B001F5173 /* FetchInterval.swift in Sources */,
 				56C7C6652C301A3B001F5173 /* Configuration.swift in Sources */,
+				560591BC2C84EF0A002C7D86 /* ServiceMethod.swift in Sources */,
+				560591C62C84F269002C7D86 /* URLRequest+Headers.swift in Sources */,
+				560591C22C84F01C002C7D86 /* APIManagerError.swift in Sources */,
 				56C7C6662C301A3B001F5173 /* Key.swift in Sources */,
 				56CF0EF42C2D4BD10061C544 /* TimeFrame.swift in Sources */,
 				56C7C6572C2FFD70001F5173 /* User.swift in Sources */,
@@ -240,6 +275,7 @@
 				56CF0EEA2C2C10B00061C544 /* main.swift in Sources */,
 				56CF0EFC2C2DB3BE0061C544 /* Folders.swift in Sources */,
 				56CF0EF62C2D4C100061C544 /* Endpoint.swift in Sources */,
+				560591C02C84EF8A002C7D86 /* Managable.swift in Sources */,
 				5694F7A42C57212D003C168A /* ConfigurationViewController.swift in Sources */,
 				56CF0EEF2C2D4B890061C544 /* Page.swift in Sources */,
 				56CF0EF82C2D502A0061C544 /* Scouter.swift in Sources */,
