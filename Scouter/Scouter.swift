@@ -70,13 +70,6 @@ class Scouter {
                 
                 checkForNew(conversations)
                 await filterAndUpdate(folders: folders.container.folders, conversations: conversations)
-                
-//                for convo in filteredConversations {
-//                    print("Subject: \(convo.subject), From: \(convo.createdBy.name())")
-//                    print("\tAssigned To: \(convo.assignee?.name())")
-//                    print(convo.preview)
-//                    print("----------------------------------------------------")
-//                }
             } catch {
                 guard let apiError = error as? APIManagerError else {
                     print(error)
@@ -117,6 +110,13 @@ class Scouter {
                 
                 filteredConversations.append(conversation)
             }
+        }
+        
+        for convo in filteredConversations {
+            print("Subject: \(convo.subject), From: \(convo.createdBy.name())")
+            print("\tAssigned To: \(convo.assignee?.name())")
+            print(convo.preview)
+            print("----------------------------------------------------")
         }
         
         self.delegate?.updateMenu(folders: apiService.mainFolders(),

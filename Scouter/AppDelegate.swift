@@ -97,6 +97,10 @@ extension AppDelegate: ScouterDelegate {
         var menuItems = [NSMenuItem]()
         
         for folder in folders {
+            if numberOfConversations(for: folder, conversations: conversations) == 0 {
+                continue
+            }
+            
             let header = NSMenuItem.sectionHeader(title: folder.name)
             menuItems.append(header)
             
@@ -114,5 +118,16 @@ extension AppDelegate: ScouterDelegate {
         }
         
         setupMenus(with: menuItems)
+    }
+    
+    func numberOfConversations(for folder: Folder, conversations: [ConversationPreview]) -> Int {
+        var numberOfConversations = 0
+        for conversation in conversations {
+            if conversation.folderId == folder.id {
+                numberOfConversations += 1
+            }
+        }
+        
+        return numberOfConversations
     }
 }
