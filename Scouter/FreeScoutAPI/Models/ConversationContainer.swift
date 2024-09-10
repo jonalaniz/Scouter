@@ -20,12 +20,6 @@ struct ConversationContainer: Codable {
         self.container = container
         self.page = page
     }
-    
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        self.embeddedd = try container.decode(EmbeddedConversations.self, forKey: .embedded)
-//        self.page = try container.decode(Page.self, forKey: .page)
-//    }
 }
 
 struct ConversationsContainer: Codable {
@@ -53,7 +47,50 @@ struct ConversationPreview: Codable {
     let userUpdatedAt: String?
     let customerWaitingSince: TimeFrame
     let source: Source
-    let cc: [String]
+    // TODO: Make this a special type that can be either Array or Dictionary
+    // [String} || [Int: String]
+    let cc: CCType
     let bcc: [String]
     let customer: User
+}
+
+enum CCType: Codable {
+    case array([String])
+    case dictionary([Int: String])
+    
+    var arrayValue: [String]? {
+        switch self {
+        case .array(let array): return array
+        default: return nil
+        }
+    }
+    
+    var dictionaryValue: [Int: String]? {
+        switch self {
+        case .dictionary(let dictionary): return dictionary
+        default: return nil
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        
+        if let data = try? container.decode([String].self) {
+            self = .array(data)
+            return
+        }
+        
+        if let data = try? container.decode([Int: String].self) {
+            self = .dictionary(data)
+            return
+        }
+        
+        throw DecodingError.typeMismatch(
+            CCType.self,
+            DecodingError.Context(
+                codingPath: decoder.codingPath,
+                debugDescription: "ccType Mismatch"
+            )
+        )
+    }
 }

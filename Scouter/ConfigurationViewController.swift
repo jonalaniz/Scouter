@@ -118,16 +118,11 @@ class ConfigurationViewController: NSViewController {
     
     private func handle(error: APIManagerError) {
         // TODO: Handle these errors
-        print(error.errorDescription)
-//        switch error {
-//        case .invalidURL: errorLabel.stringValue = "Invalid URL"
-//        case .noData: errorLabel.stringValue = "No Data"
-//        case .unableToDecode: errorLabel.stringValue = "Unable to Decode"
-//        case .invalidResponse: errorLabel.stringValue = "Invalid Response"
-//        case .requestFailed:  errorLabel.stringValue = "Request Failed"
-//        case .unauthorized: errorLabel.stringValue = "Unauthorized"
-//        }
-//        
-//        errorLabel.isHidden = false
+        switch error {
+        case .somethingWentWrong(let error): // TODO: Change this to pass actual error
+            print(error?.localizedDescription ?? "Something went wrong...")
+        default:
+            print(error.errorDescription)
+        }
     }
 }

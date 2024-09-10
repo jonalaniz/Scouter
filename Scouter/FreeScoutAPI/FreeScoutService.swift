@@ -19,7 +19,7 @@ final class FreeScoutService {
     
     func fetchConversations() async throws -> ConversationContainer {
         guard let secret = configurator.getConfiguration()?.secret else {
-            throw APIManagerError.somethingWentWrong
+            throw APIManagerError.configurationMissing
         }
         
         let urlWithEndpoint = URL(string: Endpoint.conversations.path,
@@ -43,7 +43,7 @@ final class FreeScoutService {
             let mailboxID = configurator.getConfiguration()?.mailboxID,
             let secret = configurator.getConfiguration()?.secret
         else {
-            throw APIManagerError.somethingWentWrong
+            throw APIManagerError.configurationMissing
         }
         
         let urlWithEndpoint = URL(string: Endpoint.folders(mailboxID).path,

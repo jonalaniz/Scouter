@@ -38,7 +38,7 @@ final class APIManager: Managable {
         }
         
         try response.statusCodeChecker()
-        
+                
         return try JSONDecoder().decode(T.self, from: dataWithResponse.data)
     }
 }

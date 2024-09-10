@@ -8,15 +8,18 @@
 import Foundation
 
 enum APIManagerError: Error {
+    case configurationMissing
     case conversionFailedToHTTPURLResponse
     case invalidResponse(statuscode: Int)
     case invalidURL
     case serializaitonFailed
-    case somethingWentWrong
+    case somethingWentWrong(error: Error?)
     
     var errorDescription: String {
         switch self {
-        case .conversionFailedToHTTPURLResponse: 
+        case .configurationMissing:
+            return "Missing configuration data"
+        case .conversionFailedToHTTPURLResponse:
             return "Typecasting failed."
         case .invalidResponse(let statuscode):
             return "Invalid Response (\(statuscode))"
@@ -24,8 +27,8 @@ enum APIManagerError: Error {
             return "Invalid URL"
         case .serializaitonFailed:
             return "JSONSerialization Failed"
-        case .somethingWentWrong:
-            return "Well fuck"
+        case .somethingWentWrong(let error):
+            return error?.localizedDescription ?? "Something went wrong"
         }
     }
 }
