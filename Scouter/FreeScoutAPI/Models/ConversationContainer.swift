@@ -47,8 +47,6 @@ struct ConversationPreview: Codable {
     let userUpdatedAt: String?
     let customerWaitingSince: TimeFrame
     let source: Source
-    // TODO: Make this a special type that can be either Array or Dictionary
-    // [String} || [Int: String]
     let cc: CCType
     let bcc: [String]
     let customer: User
