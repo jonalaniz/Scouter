@@ -21,7 +21,7 @@ class ConfigurationViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view loaded")
+        
         guard configurator.getConfiguration() != nil else {
             configureFetchIntervalButton()
             return
@@ -31,7 +31,6 @@ class ConfigurationViewController: NSViewController {
     }
     
     @IBAction func getMailboxesPressed(_ sender: Any) {
-        print("Get mailboxes pressed")
         guard let url = URL(string: urlField.stringValue) else {
             errorLabel.isHidden = false
             errorLabel.stringValue = "Invalid URL"
@@ -80,10 +79,6 @@ class ConfigurationViewController: NSViewController {
     }
     
     private func getMailboxes(url: URL, apiKey: String) {
-        let mailboxURL = URL(string: Endpoint.mailbox.path, relativeTo: url)
-        guard let fetchURL = mailboxURL else { return }
-        
-        // TODO: Redo this mailbox fetch in the new APIService
         Task {
             do {
                 let mailboxes = try await apiService.fetchMailboxes(key: apiKey, url: url)
