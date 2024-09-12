@@ -28,10 +28,7 @@ class Scouter {
     
     let apiService = FreeScoutService.shared
         
-    // TODO: Check on this and see if the initial guard ever gets tripped
-    private init() {
-        start()
-    }
+    private init() { start() }
     
     private func start() {
         guard
@@ -112,13 +109,6 @@ class Scouter {
             }
         }
         
-        for convo in filteredConversations {
-            print("Subject: \(convo.subject), From: \(convo.createdBy.name())")
-            print("\tAssigned To: \(convo.assignee?.name())")
-            print(convo.preview)
-            print("----------------------------------------------------")
-        }
-        
         self.delegate?.updateMenu(folders: apiService.mainFolders(),
                                   conversations: filteredConversations)
     }
@@ -127,7 +117,6 @@ class Scouter {
         // Grab the latest conversation ID
         guard let conversationID = conversations.first?.id else { return }
 
-        
         // Check if cached ID is not empty
         guard cachedConversationID != nil else {
             // Cache is empty, this is the first fetch. Set our cache to the conversationID
@@ -136,12 +125,12 @@ class Scouter {
         }
         
         guard conversationID > cachedConversationID! else {
-            // Somehow the latest conversation ID is lesser than our cached one, set cache to the latest
+            // Latest conversation ID is smaller than cached, set cache to the latest
             cachedConversationID = conversationID
             return
         }
         
-        // The latest ID is greater than our cache, update our cache and alert the user of the new conversation
+        // Latest ID is greater than cached, update cache and alert user of new conversation
         alert()
         cachedConversationID = conversationID
     }
