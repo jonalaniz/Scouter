@@ -113,6 +113,7 @@ extension AppDelegate: ScouterDelegate {
                 menuItem.indentationLevel = 1
                 menuItem.badge = NSMenuItemBadge(string: conversation.createdBy.name().truncated(18))
                 menuItem.tag = conversation.id
+                menuItem.toolTip = conversation.preview
                 menuItems.append(menuItem)
             }
         }
