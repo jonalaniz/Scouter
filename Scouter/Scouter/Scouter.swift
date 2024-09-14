@@ -178,18 +178,13 @@ class Scouter {
         case .serializaitonFailed: return
         case .somethingWentWrong(let error): return
         }
-        print("ERROR:")
     }
-}
 
-// MARK: - Menu Functions
-extension Scouter {
     private func showPreferencesWindow() {
         windowController.showWindow(nil)
     }
     
     func updateMenu(with menuItems: [NSMenuItem] = [NSMenuItem]()) {
-        print("setting Up Menus")
         let menu = NSMenu()
         menu.autoenablesItems = false
         
@@ -204,11 +199,15 @@ extension Scouter {
         let aboutMenuItem = NSMenuItem(title: "About",
                                        action: #selector(about),
                                        keyEquivalent: "")
+        aboutMenuItem.target = self
+        
         menu.addItem(aboutMenuItem)
         
         let configurationMenuItem = NSMenuItem(title: "Preferences",
                                                action: #selector(openPreferences),
                                                keyEquivalent: "")
+        configurationMenuItem.target = self
+        
         menu.addItem(configurationMenuItem)
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         
@@ -258,6 +257,7 @@ extension Scouter {
                 let menuItem = NSMenuItem(title: conversation.subject.truncated(25),
                                           action: #selector(openConversation),
                                           keyEquivalent: "")
+                menuItem.target = self
                 menuItem.indentationLevel = 1
                 menuItem.badge = NSMenuItemBadge(string: conversation.createdBy.name().truncated(18))
                 menuItem.tag = conversation.id
