@@ -36,6 +36,7 @@
 		56CF0EF62C2D4C100061C544 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF0EF52C2D4C100061C544 /* Endpoint.swift */; };
 		56CF0EF82C2D502A0061C544 /* Scouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF0EF72C2D502A0061C544 /* Scouter.swift */; };
 		56CF0EFC2C2DB3BE0061C544 /* Folders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF0EFB2C2DB3BE0061C544 /* Folders.swift */; };
+		56FA28432C95F13300280AAA /* Scouter+ConfiguratorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FA28422C95F13300280AAA /* Scouter+ConfiguratorDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		56CF0EF52C2D4C100061C544 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		56CF0EF72C2D502A0061C544 /* Scouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scouter.swift; sourceTree = "<group>"; };
 		56CF0EFB2C2DB3BE0061C544 /* Folders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folders.swift; sourceTree = "<group>"; };
+		56FA28422C95F13300280AAA /* Scouter+ConfiguratorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scouter+ConfiguratorDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +154,7 @@
 				560591BA2C84EEE0002C7D86 /* Networking */,
 				56C7C6632C301A3B001F5173 /* Resources */,
 				56CF0EE32C2C0BCC0061C544 /* Scouter.entitlements */,
-				56CF0EF72C2D502A0061C544 /* Scouter.swift */,
+				56FA283F2C95F0EC00280AAA /* Scouter */,
 				5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */,
 			);
 			path = Scouter;
@@ -180,6 +182,15 @@
 				56C7C6562C2FFD70001F5173 /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		56FA283F2C95F0EC00280AAA /* Scouter */ = {
+			isa = PBXGroup;
+			children = (
+				56CF0EF72C2D502A0061C544 /* Scouter.swift */,
+				56FA28422C95F13300280AAA /* Scouter+ConfiguratorDelegate.swift */,
+			);
+			path = Scouter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +290,7 @@
 				5694F7A42C57212D003C168A /* ConfigurationViewController.swift in Sources */,
 				56CF0EEF2C2D4B890061C544 /* Page.swift in Sources */,
 				56CF0EF82C2D502A0061C544 /* Scouter.swift in Sources */,
+				56FA28432C95F13300280AAA /* Scouter+ConfiguratorDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,6 +29,8 @@ final class APIManager: Managable {
 
         request.addHeaders(from: headers)
         
+        
+        
         return try await self.responseHandler(session.data(for: request))
     }
     
