@@ -115,14 +115,15 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		56C7C6632C301A3B001F5173 /* Resources */ = {
+		56C7C6632C301A3B001F5173 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
 				56C7C6602C301A3B001F5173 /* Configuration.swift */,
+				5694F79C2C57038C003C168A /* Configurator.swift */,
 				56C7C6612C301A3B001F5173 /* FetchInterval.swift */,
 				56C7C6622C301A3B001F5173 /* Key.swift */,
 			);
-			path = Resources;
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		56CF0ECE2C2C0BCA0061C544 = {
@@ -150,13 +151,10 @@
 				56CF0EDE2C2C0BCC0061C544 /* Assets.xcassets */,
 				5694F7A22C57212D003C168A /* ConfigurationViewController.swift */,
 				5694F7A02C571C52003C168A /* ConfigurationWindow.xib */,
-				5694F79C2C57038C003C168A /* Configurator.swift */,
-				56CF0EEB2C2CBD190061C544 /* FreeScoutAPI */,
 				56CF0EE92C2C10B00061C544 /* main.swift */,
 				560591BA2C84EEE0002C7D86 /* Networking */,
-				56C7C6632C301A3B001F5173 /* Resources */,
-				56CF0EE32C2C0BCC0061C544 /* Scouter.entitlements */,
 				56FA283F2C95F0EC00280AAA /* Scouter */,
+				56CF0EE32C2C0BCC0061C544 /* Scouter.entitlements */,
 				5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */,
 			);
 			path = Scouter;
@@ -189,8 +187,10 @@
 		56FA283F2C95F0EC00280AAA /* Scouter */ = {
 			isa = PBXGroup;
 			children = (
-				56CF0EF72C2D502A0061C544 /* Scouter.swift */,
+				56C7C6632C301A3B001F5173 /* Configuration */,
+				56CF0EEB2C2CBD190061C544 /* FreeScoutAPI */,
 				56BA70222C96A81300E15CEC /* MenuManager.swift */,
+				56CF0EF72C2D502A0061C544 /* Scouter.swift */,
 				56FA28422C95F13300280AAA /* Scouter+ConfiguratorDelegate.swift */,
 			);
 			path = Scouter;
