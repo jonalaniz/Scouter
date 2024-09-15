@@ -20,6 +20,7 @@
 		5694F79D2C57038C003C168A /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694F79C2C57038C003C168A /* Configurator.swift */; };
 		5694F7A12C571C52003C168A /* ConfigurationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5694F7A02C571C52003C168A /* ConfigurationWindow.xib */; };
 		5694F7A42C57212D003C168A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694F7A22C57212D003C168A /* ConfigurationViewController.swift */; };
+		56BA70232C96A81300E15CEC /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BA70222C96A81300E15CEC /* MenuManager.swift */; };
 		56C7C6532C2E5923001F5173 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56C7C6522C2E5923001F5173 /* alert.mp3 */; };
 		56C7C6552C2FFD41001F5173 /* ConversationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C7C6542C2FFD41001F5173 /* ConversationContainer.swift */; };
 		56C7C6572C2FFD70001F5173 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C7C6562C2FFD70001F5173 /* User.swift */; };
@@ -53,6 +54,7 @@
 		5694F79C2C57038C003C168A /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		5694F7A02C571C52003C168A /* ConfigurationWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigurationWindow.xib; sourceTree = "<group>"; };
 		5694F7A22C57212D003C168A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		56BA70222C96A81300E15CEC /* MenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
 		56C7C6502C2E4F43001F5173 /* FetchInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchInterval.swift; sourceTree = "<group>"; };
 		56C7C6522C2E5923001F5173 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alert.mp3; sourceTree = "<group>"; };
 		56C7C6542C2FFD41001F5173 /* ConversationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationContainer.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				56CF0EF72C2D502A0061C544 /* Scouter.swift */,
+				56BA70222C96A81300E15CEC /* MenuManager.swift */,
 				56FA28422C95F13300280AAA /* Scouter+ConfiguratorDelegate.swift */,
 			);
 			path = Scouter;
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56BA70232C96A81300E15CEC /* MenuManager.swift in Sources */,
 				56CF0EED2C2D4AFE0061C544 /* MailboxContainer.swift in Sources */,
 				56C7C6552C2FFD41001F5173 /* ConversationContainer.swift in Sources */,
 				5629D5E82C39E8BF00F11FC3 /* String+Truncated.swift in Sources */,

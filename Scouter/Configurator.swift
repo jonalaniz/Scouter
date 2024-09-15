@@ -5,7 +5,7 @@
 //  Created by Jon Alaniz on 7/28/24.
 //
 
-import Foundation
+import AppKit
 
 protocol ConfiguratorDelegate: AnyObject {
     func configurationChanged()
@@ -16,6 +16,7 @@ class Configurator {
     
     weak var delegate: ConfiguratorDelegate?
         
+    private let windowController = NSWindowController(windowNibName: "ConfigurationWindow")
     private var configuration: Configuration?
     
     private init() {
@@ -37,6 +38,10 @@ class Configurator {
         } catch {
             fatalError("Could not encode configuration")
         }
+    }
+    
+    @objc func showPreferencesWindow() {
+        windowController.showWindow(nil)
     }
     
     func getConfiguration() -> Configuration? {

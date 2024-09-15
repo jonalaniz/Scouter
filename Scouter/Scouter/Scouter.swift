@@ -14,9 +14,8 @@ class Scouter {
     var timer: Timer?
     
     let apiService = FreeScoutService.shared
-    let windowController = NSWindowController(windowNibName: "ConfigurationWindow")
-    
-    private var statusItem: NSStatusItem!
+    let menuManager = MenuManager.shared
+    let configurator = Configurator.shared
         
     private init() { start() }
     
@@ -28,20 +27,9 @@ class Scouter {
             errorHandler(.configurationMissing)
             return
         }
-        
-        initializeMenu()
-        
-        updateMenu()
+                
+        menuManager.updateMenu()
         setFetchTimer(at: interval)
-    }
-    
-    private func initializeMenu() {
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        
-        if let button = statusItem.button {
-            button.title = "Scouter"
-            button.image = NSImage(named: "menu-icon")
-        }
     }
     
     private func setFetchTimer(at interval: FetchInterval) {
@@ -75,15 +63,14 @@ class Scouter {
                     return
                 }
                 
-                print("APIERROR:")
-                print(apiError.errorDescription)
+                errorHandler(apiError)
             }
         }
     }
     
     func restart() {
         guard let interval = apiService.timeInterval() else {
-            showPreferencesWindow()
+            configurator.showPreferencesWindow()
             return
         }
         
@@ -100,7 +87,7 @@ class Scouter {
     @MainActor private func filterAndUpdate(folders: [Folder],
                                             conversations: [ConversationPreview]) {
         var filteredConversations = [ConversationPreview]()
-
+        
         for folder in folders {
             let filtered = conversations.filter { $0.folderId == folder.id }
             
@@ -112,7 +99,7 @@ class Scouter {
             }
         }
         
-        updateMenu(folders: apiService.mainFolders(), conversations: filteredConversations)
+        menuManager.updateMenu(folders: apiService.mainFolders(), conversations: filteredConversations)
     }
     
     private func checkForNew(_ conversations: [ConversationPreview]) {
@@ -147,13 +134,8 @@ class Scouter {
         alert?.play()
     }
     
-    func urlFor(conversation: Int) -> URL? {
-        return apiService.urlFor(conversation)
-    }
-    
     private func errorHandler(_ error: Error) {
         guard let error = error as? URLError else {
-            print("Not URLError")
             return
         }
         
@@ -169,7 +151,7 @@ class Scouter {
         switch error {
             // MARK: ShowConfigurationWindow
         case .configurationMissing:
-            openPreferences()
+            configurator.showPreferencesWindow()
         case .conversionFailedToHTTPURLResponse:
             print("Failed to respond")
         case .invalidResponse(let statuscode):
@@ -179,104 +161,12 @@ class Scouter {
         case .somethingWentWrong(let error): return
         }
     }
-
-    private func showPreferencesWindow() {
-        windowController.showWindow(nil)
-    }
-    
-    func updateMenu(with menuItems: [NSMenuItem] = [NSMenuItem]()) {
-        let menu = NSMenu()
-        menu.autoenablesItems = false
-        
-        if !menuItems.isEmpty {
-            for item in menuItems {
-                menu.addItem(item)
-            }
-        }
-        
-        menu.addItem(NSMenuItem.separator())
-        
-        let aboutMenuItem = NSMenuItem(title: "About",
-                                       action: #selector(about),
-                                       keyEquivalent: "")
-        aboutMenuItem.target = self
-        
-        menu.addItem(aboutMenuItem)
-        
-        let configurationMenuItem = NSMenuItem(title: "Preferences",
-                                               action: #selector(openPreferences),
-                                               keyEquivalent: "")
-        configurationMenuItem.target = self
-        
-        menu.addItem(configurationMenuItem)
-        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        
-        statusItem.menu = menu
-    }
-    
-    @objc func about(sender: NSMenuItem) {
-        NSApp.orderFrontStandardAboutPanel()
-    }
-    
-    @objc func openConversation(sender: NSMenuItem) {
-        guard let url = apiService.urlFor(sender.tag) else { return }
-        
-        if NSWorkspace.shared.open(url) {
-            print("default browser was successfully opened")
-        }
-    }
-    
-    @objc func openPreferences() {
-        print("opened pressed")
-        showPreferencesWindow()
-    }
     
     func active(tickets: Int) {
-        statusItem.button?.imageHugsTitle = true
-        statusItem.button?.title = " \(tickets)"
+        menuManager.displayMessage(" \(tickets)")
     }
     
     func displayMessage(_ message: String) {
-        statusItem.button?.title = message
-    }
-    
-    func updateMenu(folders: [Folder], conversations: [ConversationPreview]) {
-        var menuItems = [NSMenuItem]()
-        
-        for folder in folders {
-            if numberOfConversations(for: folder, conversations: conversations) == 0 {
-                continue
-            }
-            
-            let header = NSMenuItem.sectionHeader(title: folder.name)
-            menuItems.append(header)
-            
-            let filtered = conversations.filter { $0.folderId == folder.id }
-            
-            for conversation in filtered {
-                let menuItem = NSMenuItem(title: conversation.subject.truncated(25),
-                                          action: #selector(openConversation),
-                                          keyEquivalent: "")
-                menuItem.target = self
-                menuItem.indentationLevel = 1
-                menuItem.badge = NSMenuItemBadge(string: conversation.createdBy.name().truncated(18))
-                menuItem.tag = conversation.id
-                menuItem.toolTip = conversation.preview
-                menuItems.append(menuItem)
-            }
-        }
-        
-        updateMenu(with: menuItems)
-    }
-    
-    func numberOfConversations(for folder: Folder, conversations: [ConversationPreview]) -> Int {
-        var numberOfConversations = 0
-        for conversation in conversations {
-            if conversation.folderId == folder.id {
-                numberOfConversations += 1
-            }
-        }
-        
-        return numberOfConversations
+        menuManager.displayMessage(message)
     }
 }
