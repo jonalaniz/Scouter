@@ -41,6 +41,8 @@ class Configurator {
     }
     
     @objc func showPreferencesWindow() {
+        windowController.window?.level = .floating
+        windowController.window?.center()
         windowController.showWindow(nil)
     }
     
