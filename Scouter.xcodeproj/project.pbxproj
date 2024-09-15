@@ -422,7 +422,7 @@
 		56CF0EE72C2C0BCC0061C544 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = BetaIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Scouter/Scouter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -451,7 +451,7 @@
 		56CF0EE82C2C0BCC0061C544 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = BetaIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Scouter/Scouter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
