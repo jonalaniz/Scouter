@@ -24,7 +24,7 @@ class Scouter {
             apiService.isConfigured(),
             let interval = apiService.timeInterval()
         else {
-            errorHandler(.configurationMissing)
+            configurator.showPreferencesWindow()
             return
         }
                 
@@ -59,11 +59,11 @@ class Scouter {
                 await filterAndUpdate(folders: folders.container.folders, conversations: conversations)
             } catch {
                 guard let apiError = error as? APIManagerError else {
-                    errorHandler(error)
+                    await errorHandler(error)
                     return
                 }
                 
-                errorHandler(apiError)
+                await errorHandler(apiError)
             }
         }
     }
@@ -80,7 +80,7 @@ class Scouter {
     @MainActor private func parseForActiveTickets(_ folders: Folders) {
         for (_, folder) in folders.container.folders.enumerated()
             where folder.name == "Unassigned" {
-            active(tickets: folder.activeCount)
+            menuManager.displayMessage(" \(folder.activeCount)")
         }
     }
     
@@ -134,39 +134,37 @@ class Scouter {
         alert?.play()
     }
     
-    private func errorHandler(_ error: Error) {
+    @MainActor private func displayMessage(_ message: String) {
+        menuManager.displayMessage(message)
+    }
+    
+    private func errorHandler(_ error: Error) async {
         guard let error = error as? URLError else {
             return
         }
         
         switch error.code {
-        case .notConnectedToInternet: displayMessage("Offline")
-        default: displayMessage(error.localizedDescription)
+        case .notConnectedToInternet: await displayMessage("Offline")
+        default: await displayMessage(error.localizedDescription)
         }
     }
     
-    private func errorHandler(_ error: APIManagerError) {
-        // TODO: Handle errors and show configuration window
-        // TODO: Have a way for the menu handler to show a status message
+    private func errorHandler(_ error: APIManagerError) async {
         switch error {
-            // MARK: ShowConfigurationWindow
         case .configurationMissing:
             configurator.showPreferencesWindow()
         case .conversionFailedToHTTPURLResponse:
-            print("Failed to respond")
+            await displayMessage("No Response")
         case .invalidResponse(let statuscode):
-            print(statuscode)
-        case .invalidURL: return
-        case .serializaitonFailed: return
-        case .somethingWentWrong(let error): return
+            await displayMessage("Error: \(statuscode)")
+        case .invalidURL:
+            await displayMessage("Invalid URL")
+            configurator.showPreferencesWindow()
+        case .serializaitonFailed:
+            await displayMessage("Serialization Failed")
+        case .somethingWentWrong(let error):
+            await displayMessage("Error")
+            print("Error: \(error?.localizedDescription ?? "Unknown")")
         }
-    }
-    
-    func active(tickets: Int) {
-        menuManager.displayMessage(" \(tickets)")
-    }
-    
-    func displayMessage(_ message: String) {
-        menuManager.displayMessage(message)
     }
 }
