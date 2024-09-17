@@ -12,8 +12,10 @@
 - **Conversation Previews**: Hovering over a message shows a preview of the message contents
 - **Actions**: Click on any message to open it in your default web browser.
 
-## Installation
+## Requirements
+Scouter relies on the API & Webhooks Module being present on your FreeScout instance. More information on API & Webhooks can be found [here](https://freescout.net/module/api-webhooks/).
 
+## Installation
 Latest binary can be found in the releases section on GitHub.
 
 Scouter was built on Xcode 16 with Swift 5. It has no dependencies, so you should be able to just clone and run.
