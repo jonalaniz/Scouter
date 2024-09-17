@@ -130,6 +130,8 @@ class Scouter {
         }
         
         let alert = NSSound(contentsOf: url, byReference: false)
+        alert?.volume = 0.5
+        
         
         alert?.play()
     }
