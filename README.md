@@ -20,5 +20,11 @@ Latest binary can be found in the releases section on GitHub.
 
 Scouter was built on Xcode 16 with Swift 5. It has no dependencies, so you should be able to just clone and run.
 
+## Setup
+1. Add your FreeScout instance URL and API in Scouter Preferences.
+2. Click 'Get Mailboxes'.
+3. Select the mailbox you would like to monitor and the interval to check for new conversations.
+4. Hit save!
+
 ## Contributions
 Contributions are welcome, feel free to submit issues or pull requests to help improve Scouter.
