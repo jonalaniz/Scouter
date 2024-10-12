@@ -22,7 +22,7 @@ extension URLRequest {
     mutating func defaultHeaders() {
         self.addValue(
             HeaderKeyValue.jsonCharset.rawValue,
-            forHTTPHeaderField: HeaderKeyValue.contentType.rawValue
+            forHTTPHeaderField: HeaderKeyValue.accept.rawValue
         )
         
         self.addValue(
