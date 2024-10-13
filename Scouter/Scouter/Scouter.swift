@@ -33,11 +33,8 @@ class Scouter {
     }
     
     private func setFetchTimer(at interval: FetchInterval) {
-        if timer != nil {
-            timer?.invalidate()
-        }
-        
-        self.timer = Timer.scheduledTimer(timeInterval: interval.rawValue,
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: interval.rawValue,
                                           target: self,
                                           selector: #selector(updateConversations),
                                           userInfo: nil,

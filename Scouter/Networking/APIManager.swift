@@ -19,7 +19,7 @@ final class APIManager: Managable {
                     body: Data?,
                     headers: [String : String]?,
                     expectingReturnType: T.Type
-    ) async throws -> T where T : Decodable, T : Encodable {
+    ) async throws -> T where T: Decodable, T: Encodable {
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
         
@@ -28,8 +28,6 @@ final class APIManager: Managable {
         }
 
         request.addHeaders(from: headers)
-        
-        
         
         return try await self.responseHandler(session.data(for: request))
     }
