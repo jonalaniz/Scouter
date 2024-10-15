@@ -12,8 +12,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let notificationCenter = NSWorkspace.shared.notificationCenter
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        print("didFinishLaunching")
-
         notificationCenter.addObserver(self,
                                selector: #selector(handleSystemSleep),
                                name: NSWorkspace.willSleepNotification,
