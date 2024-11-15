@@ -17,6 +17,7 @@
 		560591CE2C853328002C7D86 /* Error+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560591CD2C853328002C7D86 /* Error+Description.swift */; };
 		5629D5E82C39E8BF00F11FC3 /* String+Truncated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */; };
 		565466912C4D15630023B8EA /* FreeScoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565466902C4D15630023B8EA /* FreeScoutService.swift */; };
+		566B3A642CE70FAC0099A6F0 /* DateFormatter+FormatConversationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566B3A632CE70FAC0099A6F0 /* DateFormatter+FormatConversationDate.swift */; };
 		5694F79D2C57038C003C168A /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694F79C2C57038C003C168A /* Configurator.swift */; };
 		5694F7A12C571C52003C168A /* ConfigurationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5694F7A02C571C52003C168A /* ConfigurationWindow.xib */; };
 		5694F7A42C57212D003C168A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694F7A22C57212D003C168A /* ConfigurationViewController.swift */; };
@@ -51,6 +52,7 @@
 		560591CD2C853328002C7D86 /* Error+Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Description.swift"; sourceTree = "<group>"; };
 		5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Truncated.swift"; sourceTree = "<group>"; };
 		565466902C4D15630023B8EA /* FreeScoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeScoutService.swift; sourceTree = "<group>"; };
+		566B3A632CE70FAC0099A6F0 /* DateFormatter+FormatConversationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+FormatConversationDate.swift"; sourceTree = "<group>"; };
 		5694F79C2C57038C003C168A /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		5694F7A02C571C52003C168A /* ConfigurationWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigurationWindow.xib; sourceTree = "<group>"; };
 		5694F7A22C57212D003C168A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,15 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		566B3A652CE70FB50099A6F0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */,
+				566B3A632CE70FAC0099A6F0 /* DateFormatter+FormatConversationDate.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		56C7C65F2C3019B4001F5173 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,11 +162,11 @@
 				56CF0EDE2C2C0BCC0061C544 /* Assets.xcassets */,
 				5694F7A22C57212D003C168A /* ConfigurationViewController.swift */,
 				5694F7A02C571C52003C168A /* ConfigurationWindow.xib */,
+				566B3A652CE70FB50099A6F0 /* Extensions */,
 				56CF0EE92C2C10B00061C544 /* main.swift */,
 				560591BA2C84EEE0002C7D86 /* Networking */,
 				56FA283F2C95F0EC00280AAA /* Scouter */,
 				56CF0EE32C2C0BCC0061C544 /* Scouter.entitlements */,
-				5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */,
 			);
 			path = Scouter;
 			sourceTree = "<group>";
@@ -295,6 +306,7 @@
 				56CF0EEF2C2D4B890061C544 /* Page.swift in Sources */,
 				56CF0EF82C2D502A0061C544 /* Scouter.swift in Sources */,
 				56FA28432C95F13300280AAA /* Scouter+ConfiguratorDelegate.swift in Sources */,
+				566B3A642CE70FAC0099A6F0 /* DateFormatter+FormatConversationDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
