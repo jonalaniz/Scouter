@@ -59,7 +59,7 @@ class Scouter {
                     await errorHandler(error)
                     return
                 }
-                
+
                 await errorHandler(apiError)
             }
         }

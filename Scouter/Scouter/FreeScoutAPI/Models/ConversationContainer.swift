@@ -49,7 +49,7 @@ struct ConversationPreview: Codable {
     let source: Source
     let cc: CCType
     let bcc: [String]
-    let customer: User
+    let customer: User?
 }
 
 enum CCType: Codable {

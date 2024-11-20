@@ -8,7 +8,7 @@
 import Foundation
 
 struct TimeFrame: Codable {
-    let time: String
+    let time: String?
     let friendly: String
     let latestReplyFrom: String
 }
