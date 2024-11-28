@@ -48,7 +48,7 @@ class MenuManager {
         menuItem.indentationLevel = 1
         menuItem.badge = NSMenuItemBadge(string: conversation.createdBy.name().truncated(18))
         menuItem.tag = conversation.id
-        menuItem.toolTip = conversation.preview + DateFormatter.formatConversationDate(conversation.createdAt)
+        menuItem.toolTip = toolTipFor(conversation)
 
         return menuItem
     }
@@ -101,5 +101,13 @@ class MenuManager {
     
     func displayMessage(_ message: String) {
         statusItem.button?.title = message
+    }
+
+    private func toolTipFor(_ conversation: ConversationPreview) -> String {
+        let toolTip = "\(conversation.preview)\n- \(conversation.customerWaitingSince.friendly)"
+
+        guard let assignee = conversation.assignee else { return toolTip }
+
+        return toolTip + " | Assigned to \(assignee.name())"
     }
 }
