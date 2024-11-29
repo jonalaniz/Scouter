@@ -18,24 +18,56 @@ class MenuManager {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem.button?.image = NSImage(named: "menu-icon")
     }
-    
-    func updateMenu(folders: [Folder],
+
+    func buildMenuFrom(folders: [Folder],
                     conversations: [ConversationPreview]) {
         var menuItems = [NSMenuItem]()
         
         for folder in folders {
+            // Check folder for conversations
             guard has(conversations, in: folder) else { continue }
-            
+
+            // Create our section header
             menuItems.append(NSMenuItem.sectionHeader(title: folder.name))
 
+            // Filter out the conversations by folder ID
             let folderConversations = conversations.filter { $0.folderId == folder.id }
 
-            folderConversations.forEach {
-                menuItems.append(createConversationMenuItem(for: $0))
+            if folderConversations.count <= 5 {
+                // Add all conversations as menu items if less than 5
+                menuItems.append(contentsOf: buildMenuitems(from: folderConversations))
+            } else {
+                // Add first 5 convserations as menu items
+                let firstFive = Array(folderConversations.prefix(5))
+                menuItems.append(contentsOf: buildMenuitems(from: firstFive))
+
+                // Add remaining conversations in a sumbenu
+                let remaining = Array(folderConversations.dropFirst(5))
+                menuItems.append(buildSubmenu(from: remaining))
             }
         }
         
         updateMenu(with: menuItems)
+    }
+
+    private func buildSubmenu(from conversations: [ConversationPreview]) -> NSMenuItem {
+        let submenuItem = NSMenuItem(title: "More",
+                                     action: nil,
+                                     keyEquivalent: "")
+        submenuItem.indentationLevel = 1
+        let submenu = NSMenu()
+
+        conversations.forEach {
+            submenu.addItem(createConversationMenuItem(for: $0))
+        }
+
+        submenuItem.submenu = submenu
+
+        return submenuItem
+    }
+
+    private func buildMenuitems(from conversations: [ConversationPreview]) -> [NSMenuItem] {
+        return conversations.map { createConversationMenuItem(for: $0) }
     }
 
     private func createConversationMenuItem(for conversation: ConversationPreview) -> NSMenuItem {
@@ -53,16 +85,17 @@ class MenuManager {
         return menuItem
     }
 
+    // Updates the menu with the menuItems that were created
     func updateMenu(with menuItems: [NSMenuItem] = [NSMenuItem]()) {
         let menu = NSMenu()
         menu.autoenablesItems = false
-        
+
         if !menuItems.isEmpty {
             menuItems.forEach { menu.addItem($0) }
         }
-        
+
         menu.addItem(NSMenuItem.separator())
-        
+
         addStaticMenuItems(to: menu)
 
         statusItem.menu = menu
@@ -89,25 +122,25 @@ class MenuManager {
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
     }
 
-    @objc func about(sender: NSMenuItem) {
-        NSApp.orderFrontStandardAboutPanel()
-    }
-    
-    @objc func openConversation(sender: NSMenuItem) {
-        guard let url = apiService.urlFor(sender.tag) else { return }
-        
-        NSWorkspace.shared.open(url)
-    }
-    
-    func displayMessage(_ message: String) {
-        statusItem.button?.title = message
-    }
-
     private func toolTipFor(_ conversation: ConversationPreview) -> String {
         let toolTip = "\(conversation.preview)\n- \(conversation.customerWaitingSince.friendly)"
 
         guard let assignee = conversation.assignee else { return toolTip }
 
         return toolTip + " | Assigned to \(assignee.name())"
+    }
+
+    @objc func about(sender: NSMenuItem) {
+        NSApp.orderFrontStandardAboutPanel()
+    }
+
+    @objc func openConversation(sender: NSMenuItem) {
+        guard let url = apiService.urlFor(sender.tag) else { return }
+
+        NSWorkspace.shared.open(url)
+    }
+
+    func displayMessage(_ message: String) {
+        statusItem.button?.title = message
     }
 }
