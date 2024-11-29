@@ -87,16 +87,10 @@ class Scouter {
         
         for folder in folders {
             let filtered = conversations.filter { $0.folderId == folder.id }
-            
-            for conversation in filtered {
-                let index = filtered.firstIndex { $0.id == conversation.id }
-                if index == 5 { break }
-                
-                filteredConversations.append(conversation)
-            }
+            filtered.forEach { filteredConversations.append($0) }
         }
         
-        menuManager.updateMenu(folders: apiService.mainFolders(), conversations: filteredConversations)
+        menuManager.buildMenuFrom(folders: apiService.mainFolders(), conversations: filteredConversations)
     }
     
     private func checkForNew(_ conversations: [ConversationPreview]) {
