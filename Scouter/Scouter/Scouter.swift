@@ -24,6 +24,7 @@ class Scouter {
             apiService.isConfigured(),
             let interval = apiService.timeInterval()
         else {
+            menuManager.updateMenu()
             configurator.showPreferencesWindow()
             return
         }
