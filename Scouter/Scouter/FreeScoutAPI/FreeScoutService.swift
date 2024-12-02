@@ -103,8 +103,7 @@ final class FreeScoutService {
     func urlFor(_ conversation: Int) -> URL? {
         let secret = configurator.getConfiguration()?.secret
         var components = URLComponents(url: (secret?.url)!, resolvingAgainstBaseURL: false)
-        components?.path += "conversation/\(conversation)"
-                
+        components?.path += "/conversation/\(conversation)"
         return components?.url
     }
 }
