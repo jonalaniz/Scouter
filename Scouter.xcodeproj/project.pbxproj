@@ -18,6 +18,7 @@
 		5629D5E82C39E8BF00F11FC3 /* String+Truncated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */; };
 		565466912C4D15630023B8EA /* FreeScoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565466902C4D15630023B8EA /* FreeScoutService.swift */; };
 		566B3A642CE70FAC0099A6F0 /* DateFormatter+FormatConversationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566B3A632CE70FAC0099A6F0 /* DateFormatter+FormatConversationDate.swift */; };
+		568EADF02CFE1F53002F6FED /* URL+AppendingPathCompontentSafely.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EADEF2CFE1F53002F6FED /* URL+AppendingPathCompontentSafely.swift */; };
 		5694F79D2C57038C003C168A /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694F79C2C57038C003C168A /* Configurator.swift */; };
 		5694F7A12C571C52003C168A /* ConfigurationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5694F7A02C571C52003C168A /* ConfigurationWindow.xib */; };
 		5694F7A42C57212D003C168A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694F7A22C57212D003C168A /* ConfigurationViewController.swift */; };
@@ -54,6 +55,7 @@
 		5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Truncated.swift"; sourceTree = "<group>"; };
 		565466902C4D15630023B8EA /* FreeScoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeScoutService.swift; sourceTree = "<group>"; };
 		566B3A632CE70FAC0099A6F0 /* DateFormatter+FormatConversationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+FormatConversationDate.swift"; sourceTree = "<group>"; };
+		568EADEF2CFE1F53002F6FED /* URL+AppendingPathCompontentSafely.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+AppendingPathCompontentSafely.swift"; sourceTree = "<group>"; };
 		5694F79C2C57038C003C168A /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		5694F7A02C571C52003C168A /* ConfigurationWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigurationWindow.xib; sourceTree = "<group>"; };
 		5694F7A22C57212D003C168A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				5629D5E72C39E8BF00F11FC3 /* String+Truncated.swift */,
 				566B3A632CE70FAC0099A6F0 /* DateFormatter+FormatConversationDate.swift */,
+				568EADEF2CFE1F53002F6FED /* URL+AppendingPathCompontentSafely.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				5629D5E82C39E8BF00F11FC3 /* String+Truncated.swift in Sources */,
 				560591CC2C853316002C7D86 /* HTTPURLResponse+StatusCodeChecker.swift in Sources */,
 				565466912C4D15630023B8EA /* FreeScoutService.swift in Sources */,
+				568EADF02CFE1F53002F6FED /* URL+AppendingPathCompontentSafely.swift in Sources */,
 				5694F79D2C57038C003C168A /* Configurator.swift in Sources */,
 				560591CE2C853328002C7D86 /* Error+Description.swift in Sources */,
 				560591C42C84F165002C7D86 /* HeaderKeyValue.swift in Sources */,
@@ -445,7 +449,7 @@
 				CODE_SIGN_ENTITLEMENTS = Scouter/Scouter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 2445G329LF;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -460,7 +464,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonalaniz.com.Scouter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -476,7 +480,7 @@
 				CODE_SIGN_ENTITLEMENTS = Scouter/Scouter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 2445G329LF;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -491,7 +495,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonalaniz.com.Scouter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

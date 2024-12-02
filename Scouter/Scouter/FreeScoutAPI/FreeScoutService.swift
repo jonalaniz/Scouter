@@ -21,17 +21,12 @@ final class FreeScoutService {
         guard let secret = configurator.getConfiguration()?.secret else {
             throw APIManagerError.configurationMissing
         }
-        
-        let urlWithEndpoint = URL(string: Endpoint.conversations.path,
-                                  relativeTo: secret.url)
-        
-        guard var fetchURL = urlWithEndpoint?.absoluteURL else {
-            throw APIManagerError.invalidURL
-        }
-        
-        fetchURL.append(queryItems: [URLQueryItem(name: "pageSize", value: "200")])
-        
-        return try await apiManager.request(url: fetchURL,
+
+        var urlWithEndpoint = secret.url.appendingPathComponentSafely(Endpoint.conversations.path)
+
+        urlWithEndpoint.append(queryItems: [URLQueryItem(name: "pageSize", value: "200")])
+
+        return try await apiManager.request(url: urlWithEndpoint,
                                             httpMethod: .get,
                                             body: nil,
                                             headers: defaultHeaders(withKey: secret.key),
@@ -45,15 +40,10 @@ final class FreeScoutService {
         else {
             throw APIManagerError.configurationMissing
         }
+
+        let urlWithEndpoint = secret.url.appendingPathComponentSafely(Endpoint.folders(mailboxID).path)
         
-        let urlWithEndpoint = URL(string: Endpoint.folders(mailboxID).path,
-                                  relativeTo: secret.url)
-        
-        guard let fetchURL = urlWithEndpoint?.absoluteURL else {
-            throw APIManagerError.invalidURL
-        }
-        
-        return try await apiManager.request(url: fetchURL,
+        return try await apiManager.request(url: urlWithEndpoint,
                                             httpMethod: .get,
                                             body: nil,
                                             headers: defaultHeaders(withKey: secret.key),
@@ -62,12 +52,10 @@ final class FreeScoutService {
     
     func fetchMailboxes(key: String,
                         url: URL) async throws -> MailboxContainer {
-        let urlWithEndpoint = URL(string: Endpoint.mailbox.path, relativeTo: url)
-        guard let fetchURL = urlWithEndpoint?.absoluteURL else {
-            throw APIManagerError.invalidURL
-        }
+        print(url)
+        let urlWithEndpoint = url.appendingPathComponentSafely(Endpoint.mailbox.path)
         
-        return try await apiManager.request(url: fetchURL,
+        return try await apiManager.request(url: urlWithEndpoint,
                                             httpMethod: .get,
                                             body: nil,
                                             headers: defaultHeaders(withKey: key),
