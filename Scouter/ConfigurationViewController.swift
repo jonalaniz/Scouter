@@ -44,7 +44,6 @@ class ConfigurationViewController: NSViewController {
         }
         
         errorLabel.isHidden = true
-        
         getMailboxes(url: url, apiKey: apiKeyField.stringValue)
     }
     
@@ -82,10 +81,9 @@ class ConfigurationViewController: NSViewController {
         Task {
             do {
                 let mailboxes = try await apiService.fetchMailboxes(key: apiKey, url: url)
-                
                 self.url = url
                 self.apiKey = apiKey
-                
+
                 configureMailboxesPopupButton(boxes: mailboxes.embeddedMailboxes.mailboxes)
             } catch {
                 guard let error = error as? APIManagerError else {
@@ -100,6 +98,8 @@ class ConfigurationViewController: NSViewController {
     }
     
     private func configureMailboxesPopupButton(boxes: [Mailbox]) {
+        mailboxesPopUpButton.removeAllItems()
+
         for box in boxes {
             mailboxesPopUpButton.addItem(withTitle: box.name)
             mailboxesPopUpButton.itemArray.last!.tag = box.id
