@@ -20,6 +20,8 @@ class Scouter {
     private init() { start() }
     
     private func start() {
+        configurator.delegate = self
+        
         guard
             apiService.isConfigured(),
             let interval = apiService.timeInterval()
@@ -28,7 +30,7 @@ class Scouter {
             configurator.showPreferencesWindow()
             return
         }
-                
+
         menuManager.updateMenu()
         setFetchTimer(at: interval)
     }
