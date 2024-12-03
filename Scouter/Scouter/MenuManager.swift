@@ -6,17 +6,25 @@
 //
 
 import AppKit
+import Sparkle
 
 class MenuManager {
     static let shared = MenuManager()
-    
+    private let updaterController: SPUStandardUpdaterController
+
     private let apiService = FreeScoutService.shared
     private let configurator = Configurator.shared
     private var statusItem: NSStatusItem!
     
     private init() {
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusItem = NSStatusBar.system.statusItem(
+            withLength: NSStatusItem.variableLength
+        )
         statusItem.button?.image = NSImage(named: "menu-icon")
+        updaterController = SPUStandardUpdaterController(
+            startingUpdater: true,
+            updaterDelegate: nil,
+            userDriverDelegate: nil)
     }
 
     func buildMenuFrom(folders: [Folder],
@@ -106,20 +114,36 @@ class MenuManager {
     }
 
     private func addStaticMenuItems(to menu: NSMenu) {
-        let aboutMenuItem = NSMenuItem(title: "About",
-                                       action: #selector(about),
-                                       keyEquivalent: "")
+        let aboutMenuItem = NSMenuItem(
+            title: "About",
+            action: #selector(about),
+            keyEquivalent: ""
+        )
         aboutMenuItem.target = self
-
         menu.addItem(aboutMenuItem)
 
-        let configurationMenuItem = NSMenuItem(title: "Preferences",
-                                               action: #selector(configurator.showPreferencesWindow),
-                                               keyEquivalent: "")
-        configurationMenuItem.target = configurator
+        let checkForUpdatesMenuItem = NSMenuItem(
+            title: "Check for Updates",
+            action: #selector(SPUStandardUpdaterController.checkForUpdates(_:)),
+            keyEquivalent: "")
+        checkForUpdatesMenuItem.target = updaterController
+        menu.addItem(checkForUpdatesMenuItem)
 
+        let configurationMenuItem = NSMenuItem(
+            title: "Preferences",
+            action: #selector(configurator.showPreferencesWindow),
+            keyEquivalent: ""
+        )
+        configurationMenuItem.target = configurator
         menu.addItem(configurationMenuItem)
-        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+
+        menu.addItem(
+            NSMenuItem(
+                title: "Quit",
+                action: #selector(NSApplication.terminate(_:)),
+                keyEquivalent: "q"
+            )
+        )
     }
 
     private func toolTipFor(_ conversation: ConversationPreview) -> String {
