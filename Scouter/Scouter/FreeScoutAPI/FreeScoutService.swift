@@ -52,7 +52,6 @@ final class FreeScoutService {
     
     func fetchMailboxes(key: String,
                         url: URL) async throws -> MailboxContainer {
-        print(url)
         let urlWithEndpoint = url.appendingPathComponentSafely(Endpoint.mailbox.path)
         
         return try await apiManager.request(url: urlWithEndpoint,
