@@ -57,6 +57,7 @@
 		565466902C4D15630023B8EA /* FreeScoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeScoutService.swift; sourceTree = "<group>"; };
 		566B3A632CE70FAC0099A6F0 /* DateFormatter+FormatConversationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+FormatConversationDate.swift"; sourceTree = "<group>"; };
 		568EADEF2CFE1F53002F6FED /* URL+AppendingPathCompontentSafely.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+AppendingPathCompontentSafely.swift"; sourceTree = "<group>"; };
+		568EAE3D2CFF8D0A002F6FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5694F79C2C57038C003C168A /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		5694F7A02C571C52003C168A /* ConfigurationWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigurationWindow.xib; sourceTree = "<group>"; };
 		5694F7A22C57212D003C168A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +165,7 @@
 		56CF0ED92C2C0BCA0061C544 /* Scouter */ = {
 			isa = PBXGroup;
 			children = (
+				568EAE3D2CFF8D0A002F6FED /* Info.plist */,
 				56BA70242C97890900E15CEC /* alert.mp3 */,
 				56CF0EDA2C2C0BCA0061C544 /* AppDelegate.swift */,
 				56CF0EDE2C2C0BCC0061C544 /* Assets.xcassets */,
@@ -459,6 +461,7 @@
 				DEVELOPMENT_TEAM = 2445G329LF;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Scouter/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -490,6 +493,7 @@
 				DEVELOPMENT_TEAM = 2445G329LF;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Scouter/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
