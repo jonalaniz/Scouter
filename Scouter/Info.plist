@@ -4,5 +4,9 @@
 <dict>
 	<key>SUPublicEDKey</key>
 	<string>OIQlpzm7impGmLdpDPAixclHyzvu0k7ca80qIy1zzmY=</string>
+	<key>SUFeedURL</key>
+	<string>https://static.jonalaniz.com/scouter/appcast.xml</string>
+	<key>SUEnableInstallerLauncherService</key>
+	<true/>
 </dict>
 </plist>
