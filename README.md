@@ -28,3 +28,8 @@ Scouter was built on Xcode 16 with Swift 5. It has no dependencies, so you shoul
 
 ## Contributions
 Contributions are welcome, feel free to submit issues or pull requests to help improve Scouter.
+
+## Support
+This is currenlty all I got going in my life, so why not buy me some coffee to keep me going?
+
+<a href="https://www.buymeacoffee.com/jonalaniz" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee" height="41" width="174"></a>
