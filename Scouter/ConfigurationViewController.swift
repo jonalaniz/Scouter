@@ -18,7 +18,8 @@ class ConfigurationViewController: NSViewController {
     let configurator = Configurator.shared
     var url: URL?
     var apiKey: String?
-    
+    var ignoredFolders: Set<String>?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,15 +47,20 @@ class ConfigurationViewController: NSViewController {
         errorLabel.isHidden = true
         getMailboxes(url: url, apiKey: apiKeyField.stringValue)
     }
+
+    @IBAction func selectionMade(_ sender: NSPopUpButton) {
+        save()
+    }
     
-    @IBAction func save(_ sender: Any) {
+    func save() {
         guard let fetchInterval = FetchInterval(rawValue: TimeInterval(fetchIntervalPopupButton.selectedTag())) else { return }
         guard let id = mailboxesPopUpButton.selectedItem?.tag else { return }
         
         let configuration = Configuration(secret: Secret(url: url!, key: apiKey!),
                                           fetchInterval: fetchInterval,
-                                          mailboxID: id)
-        
+                                          mailboxID: id,
+                                          ignoredFolders: ignoredFolders)
+
         configurator.saveConfiguration(configuration)
     }
     
@@ -109,6 +115,8 @@ class ConfigurationViewController: NSViewController {
         
         mailboxesPopUpButton.selectItem(withTag: selected)
         mailboxesPopUpButton.isEnabled = true
+
+        save()
     }
     
     private func handle(error: APIManagerError) {
