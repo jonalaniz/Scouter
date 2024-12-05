@@ -15,14 +15,14 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Scouter Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <rect key="contentRect" x="1200" y="700" width="480" height="245"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1131"/>
+            <rect key="contentRect" x="1200" y="700" width="440" height="338"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="245"/>
+                <rect key="frame" x="0.0" y="0.0" width="440" height="338"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6N6-Yg-sa0">
-                        <rect key="frame" x="18" y="209" width="91" height="16"/>
+                        <rect key="frame" x="19" y="302" width="91" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="URL:" id="rTr-1I-pWd">
                             <font key="font" metaFont="system"/>
@@ -31,7 +31,7 @@
                         </textFieldCell>
                     </textField>
                     <textField focusRingType="none" verticalHuggingPriority="750" id="qKY-67-AQx" userLabel="URL Field" customClass="EditableNSTextField" customModule="Scouter" customModuleProvider="target">
-                        <rect key="frame" x="118" y="206" width="340" height="21"/>
+                        <rect key="frame" x="118" y="299" width="303" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="DFM-71-uJk">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -40,7 +40,7 @@
                         </textFieldCell>
                     </textField>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hVI-l8-PO2">
-                        <rect key="frame" x="18" y="176" width="91" height="16"/>
+                        <rect key="frame" x="19" y="269" width="91" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="API Key:" id="2i5-7J-TDR">
                             <font key="font" metaFont="system"/>
@@ -49,7 +49,7 @@
                         </textFieldCell>
                     </textField>
                     <secureTextField focusRingType="none" verticalHuggingPriority="750" id="lN4-mp-eFo" userLabel="API Field">
-                        <rect key="frame" x="118" y="173" width="340" height="21"/>
+                        <rect key="frame" x="118" y="266" width="303" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="xbi-rx-tZO">
                             <font key="font" metaFont="system"/>
@@ -61,7 +61,7 @@
                         </secureTextFieldCell>
                     </secureTextField>
                     <textField hidden="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zP5-SW-Be3">
-                        <rect key="frame" x="118" y="144" width="224" height="13"/>
+                        <rect key="frame" x="118" y="237" width="184" height="13"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Error status label" id="mQy-tF-DKa">
                             <font key="font" textStyle="caption1" name=".SFNS-Regular"/>
@@ -70,7 +70,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" id="eU9-ad-Dg6">
-                        <rect key="frame" x="344" y="133" width="120" height="32"/>
+                        <rect key="frame" x="307" y="226" width="120" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Get Mailboxes" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="s1l-Di-aAV">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -81,11 +81,11 @@
                         </connections>
                     </button>
                     <box verticalHuggingPriority="750" boxType="separator" id="gK8-Om-bcI">
-                        <rect key="frame" x="20" y="123" width="440" height="5"/>
+                        <rect key="frame" x="20" y="216" width="400" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="sop-Vn-wVf">
-                        <rect key="frame" x="18" y="92" width="91" height="16"/>
+                        <rect key="frame" x="19" y="185" width="91" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Mailbox:" id="ev8-T3-kYr">
                             <font key="font" metaFont="system"/>
@@ -94,7 +94,7 @@
                         </textFieldCell>
                     </textField>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QNg-HD-OMQ">
-                        <rect key="frame" x="18" y="57" width="91" height="16"/>
+                        <rect key="frame" x="19" y="150" width="91" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Fetch Interval:" id="wP4-2t-wCQ">
                             <font key="font" metaFont="system"/>
@@ -103,7 +103,7 @@
                         </textFieldCell>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f0z-Ao-3IL" userLabel="MailboxesButton">
-                        <rect key="frame" x="116" y="85" width="345" height="25"/>
+                        <rect key="frame" x="116" y="178" width="307" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" enabled="NO" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="oPi-jK-zZN">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -115,7 +115,7 @@
                         </connections>
                     </popUpButton>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gBD-cD-K81" userLabel="FetchIntervalPopupButton">
-                        <rect key="frame" x="116" y="50" width="345" height="25"/>
+                        <rect key="frame" x="116" y="143" width="307" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="5I1-Rb-pzP">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -127,7 +127,7 @@
                         </connections>
                     </popUpButton>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rgu-dL-yaE">
-                        <rect key="frame" x="20" y="20" width="440" height="16"/>
+                        <rect key="frame" x="20" y="14" width="400" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Scouter 1.0.7" id="ZvN-pQ-T8D">
                             <font key="font" metaFont="system"/>
@@ -135,15 +135,84 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="em0-LR-nIV">
+                        <rect key="frame" x="19" y="115" width="91" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Folders:" id="CAx-uQ-K93">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZY-JF-sJx">
+                        <rect key="frame" x="119" y="42" width="300" height="90"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" id="21e-db-bum">
+                            <rect key="frame" x="1" y="1" width="298" height="88"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" enabled="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" id="riq-Tr-dv4">
+                                    <rect key="frame" x="0.0" y="0.0" width="298" height="88"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <size key="intercellSpacing" width="17" height="0.0"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    <tableColumns>
+                                        <tableColumn identifier="AutomaticTableColumnIdentifier.0" width="286" minWidth="40" maxWidth="1000" id="FZi-Mj-1PR">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" enabled="NO" borderStyle="border" title="Show">
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" enabled="NO" title="Text Cell" id="3V6-e5-rTG">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <prototypeCellViews>
+                                                <tableCellView id="iLB-Kf-6ce">
+                                                    <rect key="frame" x="8" y="0.0" width="281" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <textField identifier="FolderCell" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ctQ-qb-hks">
+                                                            <rect key="frame" x="0.0" y="4" width="281" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="QnD-Ox-6PP">
+                                                                <font key="font" usesAppearanceFont="YES"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                    </subviews>
+                                                    <connections>
+                                                        <outlet property="textField" destination="ctQ-qb-hks" id="SZf-SN-tv3"/>
+                                                    </connections>
+                                                </tableCellView>
+                                            </prototypeCellViews>
+                                        </tableColumn>
+                                    </tableColumns>
+                                </tableView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="vRi-f3-vWj">
+                            <rect key="frame" x="1" y="86" width="298" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="aGe-9R-ZTa">
+                            <rect key="frame" x="224" y="17" width="15" height="102"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="3" y="145.5"/>
+            <point key="canvasLocation" x="3" y="145"/>
         </window>
         <viewController id="7Tl-oc-EbB" customClass="ConfigurationViewController" customModule="Scouter" customModuleProvider="target">
             <connections>
                 <outlet property="apiKeyField" destination="lN4-mp-eFo" id="8xB-QL-iR5"/>
                 <outlet property="errorLabel" destination="zP5-SW-Be3" id="MiH-vC-om1"/>
                 <outlet property="fetchIntervalPopupButton" destination="gBD-cD-K81" id="91W-83-0b4"/>
+                <outlet property="folderTableView" destination="riq-Tr-dv4" id="6aE-pZ-vvp"/>
                 <outlet property="mailboxesPopUpButton" destination="f0z-Ao-3IL" id="u8K-HN-ZIM"/>
                 <outlet property="urlField" destination="qKY-67-AQx" id="bKO-NH-22Z"/>
                 <outlet property="versionLabel" destination="rgu-dL-yaE" id="LCE-wB-VNj"/>
