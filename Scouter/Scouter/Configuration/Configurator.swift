@@ -35,6 +35,7 @@ class Configurator {
     private func saveConfiguration() {
         do {
             UserDefaults.standard.set(try PropertyListEncoder().encode(configuration), forKey: "configuration")
+            windowController.window?.close()
         } catch {
             fatalError("Could not encode configuration")
         }
