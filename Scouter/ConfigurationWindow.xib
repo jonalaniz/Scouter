@@ -146,6 +146,7 @@
                 <outlet property="fetchIntervalPopupButton" destination="gBD-cD-K81" id="91W-83-0b4"/>
                 <outlet property="mailboxesPopUpButton" destination="f0z-Ao-3IL" id="u8K-HN-ZIM"/>
                 <outlet property="urlField" destination="qKY-67-AQx" id="bKO-NH-22Z"/>
+                <outlet property="versionLabel" destination="rgu-dL-yaE" id="LCE-wB-VNj"/>
                 <outlet property="view" destination="EiT-Mj-1SZ" id="FC4-fM-MuY"/>
             </connections>
         </viewController>

@@ -13,7 +13,8 @@ class ConfigurationViewController: NSViewController {
     @IBOutlet var errorLabel: NSTextField!
     @IBOutlet var mailboxesPopUpButton: NSPopUpButton!
     @IBOutlet var fetchIntervalPopupButton: NSPopUpButton!
-    
+    @IBOutlet weak var versionLabel: NSTextField!
+
     let apiService = FreeScoutService.shared
     let configurator = Configurator.shared
     var url: URL?
@@ -22,7 +23,8 @@ class ConfigurationViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        versionLabel.stringValue = appVersion()
+
         guard configurator.getConfiguration() != nil else {
             configureFetchIntervalButton()
             return
@@ -127,5 +129,11 @@ class ConfigurationViewController: NSViewController {
         default:
             print(error.errorDescription)
         }
+    }
+
+    private func appVersion() -> String {
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        else { return "Scouter v.Unknown" }
+        return "Scouter v.\(version)"
     }
 }

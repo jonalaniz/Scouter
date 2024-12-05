@@ -114,14 +114,6 @@ class MenuManager {
     }
 
     private func addStaticMenuItems(to menu: NSMenu) {
-        let aboutMenuItem = NSMenuItem(
-            title: "About",
-            action: #selector(about),
-            keyEquivalent: ""
-        )
-        aboutMenuItem.target = self
-        menu.addItem(aboutMenuItem)
-
         let checkForUpdatesMenuItem = NSMenuItem(
             title: "Check for Updates",
             action: #selector(SPUStandardUpdaterController.checkForUpdates(_:)),
@@ -152,10 +144,6 @@ class MenuManager {
         guard let assignee = conversation.assignee else { return toolTip }
 
         return toolTip + " | Assigned to \(assignee.name())"
-    }
-
-    @objc func about(sender: NSMenuItem) {
-        NSApp.orderFrontStandardAboutPanel()
     }
 
     @objc func openConversation(sender: NSMenuItem) {
