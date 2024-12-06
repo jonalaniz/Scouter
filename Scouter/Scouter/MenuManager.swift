@@ -30,8 +30,12 @@ class MenuManager {
     func buildMenuFrom(folders: [Folder],
                     conversations: [ConversationPreview]) {
         var menuItems = [NSMenuItem]()
-        
-        for folder in folders {
+        var filteredFolders: [Folder]
+
+        let ignoredFolders = configurator.getConfiguration()?.ignoredFolders ?? []
+        filteredFolders = folders.filter { !ignoredFolders.contains($0.name) }
+
+        for folder in filteredFolders {
             // Check folder for conversations
             guard has(conversations, in: folder) else { continue }
 
