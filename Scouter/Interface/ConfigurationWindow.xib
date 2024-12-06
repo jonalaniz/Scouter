@@ -16,12 +16,12 @@
         <window title="Scouter Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="1200" y="700" width="440" height="338"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1125"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="440" height="338"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6N6-Yg-sa0">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6N6-Yg-sa0">
                         <rect key="frame" x="19" y="302" width="91" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="URL:" id="rTr-1I-pWd">
@@ -30,7 +30,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" verticalHuggingPriority="750" id="qKY-67-AQx" userLabel="URL Field" customClass="EditableNSTextField" customModule="Scouter" customModuleProvider="target">
+                    <textField verticalHuggingPriority="750" id="qKY-67-AQx" userLabel="URL Field" customClass="EditableNSTextField" customModule="Scouter" customModuleProvider="target">
                         <rect key="frame" x="118" y="299" width="303" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="DFM-71-uJk">
@@ -39,7 +39,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hVI-l8-PO2">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hVI-l8-PO2">
                         <rect key="frame" x="19" y="269" width="91" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="API Key:" id="2i5-7J-TDR">
@@ -48,7 +48,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <secureTextField focusRingType="none" verticalHuggingPriority="750" id="lN4-mp-eFo" userLabel="API Field">
+                    <secureTextField verticalHuggingPriority="750" id="lN4-mp-eFo" userLabel="API Field">
                         <rect key="frame" x="118" y="266" width="303" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="xbi-rx-tZO">
@@ -60,7 +60,7 @@
                             </allowedInputSourceLocales>
                         </secureTextFieldCell>
                     </secureTextField>
-                    <textField hidden="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zP5-SW-Be3">
+                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zP5-SW-Be3">
                         <rect key="frame" x="118" y="237" width="184" height="13"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Error status label" id="mQy-tF-DKa">
@@ -84,7 +84,7 @@
                         <rect key="frame" x="20" y="216" width="400" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="sop-Vn-wVf">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="sop-Vn-wVf">
                         <rect key="frame" x="19" y="185" width="91" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Mailbox:" id="ev8-T3-kYr">
@@ -93,7 +93,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QNg-HD-OMQ">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QNg-HD-OMQ">
                         <rect key="frame" x="19" y="150" width="91" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Fetch Interval:" id="wP4-2t-wCQ">
@@ -126,7 +126,7 @@
                             <action selector="selectionMade:" target="7Tl-oc-EbB" id="Fld-fc-cPW"/>
                         </connections>
                     </popUpButton>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rgu-dL-yaE">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rgu-dL-yaE">
                         <rect key="frame" x="20" y="14" width="400" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Scouter 1.0.7" id="ZvN-pQ-T8D">
@@ -135,7 +135,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="em0-LR-nIV">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="em0-LR-nIV">
                         <rect key="frame" x="19" y="115" width="91" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Folders:" id="CAx-uQ-K93">
@@ -174,7 +174,7 @@
                                                     <rect key="frame" x="8" y="0.0" width="281" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField identifier="FolderCell" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ctQ-qb-hks">
+                                                        <textField identifier="FolderCell" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ctQ-qb-hks">
                                                             <rect key="frame" x="0.0" y="4" width="281" height="16"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="QnD-Ox-6PP">
@@ -195,7 +195,7 @@
                             </subviews>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="vRi-f3-vWj">
-                            <rect key="frame" x="1" y="86" width="298" height="16"/>
+                            <rect key="frame" x="1" y="73" width="298" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="aGe-9R-ZTa">

@@ -37,49 +37,44 @@ class ConfigurationViewController: NSViewController {
     }
 
     private func showConfiguration() {
+        // check if there is a configuration saved
         guard let config = configurator.getConfiguration() else { return }
-        configureFetchIntervalButton()
 
+        configureFetchIntervalButton()
         urlField.stringValue = config.secret.url.absoluteString
         apiKeyField.stringValue = (config.secret.key)
-
         ignoredFolders = config.ignoredFolders
-
         getMailboxes(url: config.secret.url, apiKey: config.secret.key)
-
-        configureFetchIntervalButton()
-        fetchIntervalPopupButton.selectItem(withTag: Int(config.fetchInterval.rawValue))
-    }
-
-    @IBAction func getMailboxesPressed(_ sender: Any) {
-        guard let url = URL(string: urlField.stringValue) else {
-            errorLabel.isHidden = false
-            errorLabel.stringValue = "Invalid URL"
-            return
-        }
-        
-        guard apiKeyField.stringValue != "" else {
-            errorLabel.isHidden = false
-            errorLabel.stringValue = "Invalid API key"
-            return
-        }
-        
-        errorLabel.isHidden = true
-        getMailboxes(url: url, apiKey: apiKeyField.stringValue)
-        ignoredFolders.removeAll()
-    }
-
-    @IBAction func selectionMade(_ sender: NSPopUpButton) {
-        if sender == mailboxesPopUpButton {
-            ignoredFolders.removeAll()
-            reloadTable()
-        }
-
-        save()
     }
     
-    func save() {
-        guard let fetchInterval = FetchInterval(rawValue: TimeInterval(fetchIntervalPopupButton.selectedTag())) else { return }
+    private func getMailboxes(url: URL, apiKey: String) {
+        Task {
+            do {
+                let mailboxes = try await apiService.fetchMailboxes(key: apiKey, url: url)
+                self.url = url
+                self.apiKey = apiKey
+
+                configureMailboxesPopupButton(boxes: mailboxes.embeddedMailboxes.mailboxes)
+                configureFetchIntervalButton()
+            } catch {
+                guard let error = error as? APIManagerError else {
+                    errorLabel.stringValue = error.localizedDescription
+                    errorLabel.isHidden = false
+                    return
+                }
+                
+                self.handle(error: error)
+            }
+        }
+    }
+
+    private func save() {
+        let fetchInterval = FetchInterval(
+            rawValue: TimeInterval(
+                fetchIntervalPopupButton.selectedTag()
+            )
+        ) ?? FetchInterval.oneMinute
+
         guard let id = mailboxesPopUpButton.selectedItem?.tag else { return }
         guard let url = url, let apiKey = apiKey
         else { return }
@@ -92,34 +87,8 @@ class ConfigurationViewController: NSViewController {
             ignoredFolders: ignoredFolders
         )
     }
-    
-    private func configureFetchIntervalButton() {
-        for item in FetchInterval.allCases {
-            fetchIntervalPopupButton.addItem(withTitle: item.title)
-            fetchIntervalPopupButton.itemArray.last!.tag = Int(item.rawValue)
-        }
-    }
-    
-    private func getMailboxes(url: URL, apiKey: String) {
-        Task {
-            do {
-                let mailboxes = try await apiService.fetchMailboxes(key: apiKey, url: url)
-                self.url = url
-                self.apiKey = apiKey
 
-                configureMailboxesPopupButton(boxes: mailboxes.embeddedMailboxes.mailboxes)
-            } catch {
-                guard let error = error as? APIManagerError else {
-                    errorLabel.stringValue = error.localizedDescription
-                    errorLabel.isHidden = false
-                    return
-                }
-                
-                self.handle(error: error)
-            }
-        }
-    }
-    
+    @MainActor
     private func configureMailboxesPopupButton(boxes: [Mailbox]) {
         mailboxesPopUpButton.removeAllItems()
 
@@ -127,15 +96,26 @@ class ConfigurationViewController: NSViewController {
             mailboxesPopUpButton.addItem(withTitle: box.name)
             mailboxesPopUpButton.itemArray.last!.tag = box.id
         }
-        
-        guard let selected = configurator.getConfiguration()?.mailboxID else { return }
-        
+
+        let selected = configurator.getConfiguration()?.mailboxID ?? boxes[0].id
+
         mailboxesPopUpButton.selectItem(withTag: selected)
         mailboxesPopUpButton.isEnabled = true
 
-        configureFolderTableView(with: selected)
-
         save()
+
+        configureFolderTableView(with: selected)
+    }
+
+    private func configureFetchIntervalButton() {
+        for item in FetchInterval.allCases {
+            fetchIntervalPopupButton.addItem(withTitle: item.title)
+            fetchIntervalPopupButton.itemArray.last!.tag = Int(item.rawValue)
+        }
+
+        if let selected = configurator.getConfiguration()?.fetchInterval {
+            fetchIntervalPopupButton.selectItem(withTag: Int(selected.rawValue))
+        }
     }
 
     private func configureFolderTableView(with mailbox: Int) {
@@ -150,6 +130,34 @@ class ConfigurationViewController: NSViewController {
         }
     }
 
+    @IBAction func getMailboxesPressed(_ sender: Any) {
+        guard let url = URL(string: urlField.stringValue) else {
+            errorLabel.isHidden = false
+            errorLabel.stringValue = "Invalid URL"
+            return
+        }
+
+        guard apiKeyField.stringValue != "" else {
+            errorLabel.isHidden = false
+            errorLabel.stringValue = "Invalid API key"
+            return
+        }
+
+        errorLabel.isHidden = true
+        getMailboxes(url: url, apiKey: apiKeyField.stringValue)
+        ignoredFolders.removeAll()
+    }
+
+    @IBAction func selectionMade(_ sender: NSPopUpButton) {
+        if sender == mailboxesPopUpButton {
+            ignoredFolders.removeAll()
+            reloadTable()
+        }
+
+        save()
+    }
+
+    // MARK: - Helper Functions
     private func handle(error: APIManagerError) {
         // TODO: Handle these errors
         switch error {
@@ -160,7 +168,6 @@ class ConfigurationViewController: NSViewController {
         }
     }
 
-    // MARK: Helper Functions
     private func appVersion() -> String {
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         else { return "Scouter v.Unknown" }
