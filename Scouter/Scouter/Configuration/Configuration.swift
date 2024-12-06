@@ -11,5 +11,5 @@ struct Configuration: Codable {
     let secret: Secret
     let fetchInterval: FetchInterval
     let mailboxID: Int
-    let ignoredFolders: Set<String>?
+    var ignoredFolders: Set<String> = []
 }
