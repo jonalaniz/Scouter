@@ -35,6 +35,7 @@ class Configurator {
     private func saveConfiguration() {
         do {
             UserDefaults.standard.set(try PropertyListEncoder().encode(configuration), forKey: "configuration")
+            delegate?.configurationChanged()
         } catch {
             fatalError("Could not encode configuration")
         }
@@ -49,10 +50,17 @@ class Configurator {
     func getConfiguration() -> Configuration? {
         return configuration
     }
-    
-    func saveConfiguration(_ configuration: Configuration) {
-        self.configuration = configuration
+
+    func updateConriguration(url: URL,
+                             key: String,
+                             fetchInterval: FetchInterval,
+                             id: Int,
+                             ignoredFolders: Set<String>) {
+        configuration = Configuration(secret: Secret(url: url, key: key),
+                                      fetchInterval: fetchInterval,
+                                      mailboxID: id,
+                                      ignoredFolders: ignoredFolders)
+
         saveConfiguration()
-        delegate?.configurationChanged()
     }
 }
