@@ -114,6 +114,16 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		560EF2272D027C7100975436 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				5694F7A22C57212D003C168A /* ConfigurationViewController.swift */,
+				5694F7A02C571C52003C168A /* ConfigurationWindow.xib */,
+				56B598122CFDED500060B42B /* EditableNSTextField.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
 		566B3A652CE70FB50099A6F0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,9 +179,7 @@
 				56BA70242C97890900E15CEC /* alert.mp3 */,
 				56CF0EDA2C2C0BCA0061C544 /* AppDelegate.swift */,
 				56CF0EDE2C2C0BCC0061C544 /* Assets.xcassets */,
-				5694F7A22C57212D003C168A /* ConfigurationViewController.swift */,
-				5694F7A02C571C52003C168A /* ConfigurationWindow.xib */,
-				56B598122CFDED500060B42B /* EditableNSTextField.swift */,
+				560EF2272D027C7100975436 /* Interface */,
 				566B3A652CE70FB50099A6F0 /* Extensions */,
 				56CF0EE92C2C10B00061C544 /* main.swift */,
 				560591BA2C84EEE0002C7D86 /* Networking */,
