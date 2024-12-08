@@ -12,7 +12,7 @@ enum FetchInterval: TimeInterval, CaseIterable, Codable {
     case fiveMinutes = 300
     case fifteenMinutes = 900
     case thirtyMinutes = 1800
-    
+
     var title: String {
         switch self {
         case .oneMinute: return "Each Minute"

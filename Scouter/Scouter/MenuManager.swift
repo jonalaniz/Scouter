@@ -15,7 +15,7 @@ class MenuManager {
     private let apiService = FreeScoutService.shared
     private let configurator = Configurator.shared
     private var statusItem: NSStatusItem!
-    
+
     private init() {
         statusItem = NSStatusBar.system.statusItem(
             withLength: NSStatusItem.variableLength
@@ -28,7 +28,7 @@ class MenuManager {
     }
 
     func buildMenuFrom(folders: [Folder],
-                    conversations: [ConversationPreview]) {
+                       conversations: [ConversationPreview]) {
         var menuItems = [NSMenuItem]()
         var filteredFolders: [Folder]
 
@@ -58,7 +58,7 @@ class MenuManager {
                 menuItems.append(buildSubmenu(from: remaining))
             }
         }
-        
+
         updateMenu(with: menuItems)
     }
 
@@ -113,7 +113,7 @@ class MenuManager {
         statusItem.menu = menu
     }
 
-    private func has(_ conversations: [ConversationPreview], in folder: Folder) -> Bool{
+    private func has(_ conversations: [ConversationPreview], in folder: Folder) -> Bool {
         conversations.contains { $0.folderId == folder.id }
     }
 

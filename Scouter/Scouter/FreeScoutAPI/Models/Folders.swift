@@ -7,6 +7,7 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name
 struct Folders: Codable {
     let container: FoldersContainer
     let page: Page

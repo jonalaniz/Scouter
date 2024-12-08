@@ -12,7 +12,7 @@ extension String {
         if self.count > count {
             return String(self.prefix(count))
         }
-        
+
         return self
     }
 }

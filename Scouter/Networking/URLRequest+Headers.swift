@@ -13,18 +13,18 @@ extension URLRequest {
             self.defaultHeaders()
             return
         }
-        
+
         for header in headers {
             self.addValue(header.value, forHTTPHeaderField: header.key)
         }
     }
-    
+
     mutating func defaultHeaders() {
         self.addValue(
             HeaderKeyValue.jsonCharset.rawValue,
             forHTTPHeaderField: HeaderKeyValue.accept.rawValue
         )
-        
+
         self.addValue(
             HeaderKeyValue.applicationJSON.rawValue,
             forHTTPHeaderField: HeaderKeyValue.contentType.rawValue

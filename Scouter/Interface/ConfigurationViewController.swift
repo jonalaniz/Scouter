@@ -7,6 +7,7 @@
 
 import Cocoa
 
+// swiftlint:disable identifier_name
 class ConfigurationViewController: NSViewController {
     @IBOutlet var urlField: NSTextField!
     @IBOutlet var apiKeyField: NSSecureTextField!
@@ -46,7 +47,7 @@ class ConfigurationViewController: NSViewController {
         ignoredFolders = config.ignoredFolders
         getMailboxes(url: config.secret.url, apiKey: config.secret.key)
     }
-    
+
     private func getMailboxes(url: URL, apiKey: String) {
         Task {
             do {
@@ -62,7 +63,7 @@ class ConfigurationViewController: NSViewController {
                     errorLabel.isHidden = false
                     return
                 }
-                
+
                 self.handle(error: error)
             }
         }

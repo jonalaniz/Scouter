@@ -7,31 +7,32 @@
 
 import AppKit
 
+// swiftlint:disable identifier_name
 protocol ConfiguratorDelegate: AnyObject {
     func configurationChanged()
 }
 
 class Configurator {
     static let shared = Configurator()
-    
+
     weak var delegate: ConfiguratorDelegate?
-        
+
     private let windowController = NSWindowController(windowNibName: "ConfigurationWindow")
     private var configuration: Configuration?
-    
+
     private init() {
         loadConfiguration()
     }
-    
+
     private func loadConfiguration() {
         guard
             let data = UserDefaults.standard.data(forKey: "configuration"),
             let configuration = try? PropertyListDecoder().decode(Configuration.self, from: data)
         else  { return }
-                
+
         self.configuration = configuration
     }
-    
+
     private func saveConfiguration() {
         do {
             UserDefaults.standard.set(try PropertyListEncoder().encode(configuration), forKey: "configuration")
@@ -40,13 +41,13 @@ class Configurator {
             fatalError("Could not encode configuration")
         }
     }
-    
+
     @objc func showPreferencesWindow() {
         windowController.window?.level = .floating
         windowController.window?.center()
         windowController.showWindow(nil)
     }
-    
+
     func getConfiguration() -> Configuration? {
         return configuration
     }

@@ -7,10 +7,11 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name
 struct MailboxContainer: Codable {
     let embeddedMailboxes: EmbeddedMailboxes
     let page: Page
-    
+
     enum CodingKeys: String, CodingKey {
         case embeddedMailboxes = "_embedded"
         case page

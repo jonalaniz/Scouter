@@ -14,7 +14,7 @@ enum APIManagerError: Error {
     case invalidURL
     case serializaitonFailed
     case somethingWentWrong(error: Error?)
-    
+
     var errorDescription: String {
         switch self {
         case .configurationMissing:

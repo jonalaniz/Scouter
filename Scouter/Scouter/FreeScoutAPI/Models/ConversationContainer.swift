@@ -7,6 +7,7 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name
 struct ConversationContainer: Codable {
     let container: ConversationsContainer
     let page: Page
@@ -15,7 +16,7 @@ struct ConversationContainer: Codable {
         case container = "_embedded"
         case page
     }
-    
+
     init(container: ConversationsContainer, page: Page) {
         self.container = container
         self.page = page
@@ -55,34 +56,34 @@ struct ConversationPreview: Codable {
 enum CCType: Codable {
     case array([String])
     case dictionary([Int: String])
-    
+
     var arrayValue: [String]? {
         switch self {
         case .array(let array): return array
         default: return nil
         }
     }
-    
+
     var dictionaryValue: [Int: String]? {
         switch self {
         case .dictionary(let dictionary): return dictionary
         default: return nil
         }
     }
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        
+
         if let data = try? container.decode([String].self) {
             self = .array(data)
             return
         }
-        
+
         if let data = try? container.decode([Int: String].self) {
             self = .dictionary(data)
             return
         }
-        
+
         throw DecodingError.typeMismatch(
             CCType.self,
             DecodingError.Context(
