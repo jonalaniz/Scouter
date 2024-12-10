@@ -157,6 +157,6 @@ class MenuManager {
     }
 
     func displayMessage(_ message: String) {
-        statusItem.button?.title = message
+        statusItem.button?.title = message.truncated(25)
     }
 }
