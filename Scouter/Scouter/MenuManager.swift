@@ -90,7 +90,9 @@ class MenuManager {
         )
         menuItem.target = self
         menuItem.indentationLevel = 1
-        menuItem.badge = NSMenuItemBadge(string: conversation.createdBy.name().truncated(18))
+        if (conversation.createdBy != nil) {
+            menuItem.badge = NSMenuItemBadge(string: conversation.createdBy!.name().truncated(18))
+        }
         menuItem.tag = conversation.id
         menuItem.toolTip = toolTipFor(conversation)
 
