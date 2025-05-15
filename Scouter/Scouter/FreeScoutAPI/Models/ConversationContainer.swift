@@ -39,7 +39,7 @@ struct ConversationPreview: Codable {
     let preview: String
     let mailboxID: String?
     let assignee: User?
-    let createdBy: User
+    let createdBy: User?
     let createdAt: String
     let updatedAt: String
     let closedBy: Int?
