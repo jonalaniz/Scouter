@@ -29,8 +29,7 @@ final class FreeScoutService {
         return try await apiManager.request(url: urlWithEndpoint,
                                             httpMethod: .get,
                                             body: nil,
-                                            headers: defaultHeaders(withKey: secret.key),
-                                            expectingReturnType: ConversationContainer.self)
+                                            headers: defaultHeaders(withKey: secret.key))
     }
 
     func fetchFolders() async throws -> Folders {
@@ -46,8 +45,7 @@ final class FreeScoutService {
         return try await apiManager.request(url: urlWithEndpoint,
                                             httpMethod: .get,
                                             body: nil,
-                                            headers: defaultHeaders(withKey: secret.key),
-                                            expectingReturnType: Folders.self)
+                                            headers: defaultHeaders(withKey: secret.key))
     }
 
     func fetchMailboxes(key: String,
@@ -57,8 +55,7 @@ final class FreeScoutService {
         return try await apiManager.request(url: urlWithEndpoint,
                                             httpMethod: .get,
                                             body: nil,
-                                            headers: defaultHeaders(withKey: key),
-                                            expectingReturnType: MailboxContainer.self)
+                                            headers: defaultHeaders(withKey: key))
     }
 
     func set(_ folders: Folders) {
