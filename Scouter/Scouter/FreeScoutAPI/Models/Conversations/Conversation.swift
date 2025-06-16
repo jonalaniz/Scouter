@@ -16,7 +16,7 @@ struct Conversation: Codable {
     let state: ConversationState
     let subject, preview: String
     let mailboxID: Int
-    let assignee: Assignee
+    let assignee: Assignee?
     let createdBy: ConversationUser?
     let createdAt: String
     let updatedAt: String?
@@ -81,33 +81,8 @@ struct ConversationUser: Codable {
 
 struct EmbeddedThreads: Codable {
     let threads: [Thread]
-    let timelogs: [Timelog]
-    let tags: [Tag]
-}
-
-struct Thread: Codable {
-    let id: Int
-    let type, status, state: String
-    let action: Action
-    let body: String?
-    let source: Source
-    let customer, createdBy, assignedTo: ConversationUser?
-    let to: [String]
-    let cc, bcc: CCType
-    let createdAt: String
-    let openedAt: String?
-    let embedded: EmbeddedAttachments
-
-    enum CodingKeys: String, CodingKey {
-        case id, type, status, state, action, body, source, customer
-        case createdBy, assignedTo, to, cc, bcc, createdAt, openedAt
-        case embedded = "_embedded"
-    }
-}
-
-struct Action: Codable {
-    let type, text: String
-//    let associatedEntities: [Any]
+    let timelogs: [Timelog]?
+    let tags: [Tag]?
 }
 
 struct EmbeddedAttachments: Codable {

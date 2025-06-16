@@ -30,7 +30,7 @@ struct FoldersContainer: Codable {
 struct Folder: Codable {
     let id: Int
     let name: String
-    let type: Int
+    let type: FolderType
     let userId: Int?
     let totalCount: Int
     let activeCount: Int
