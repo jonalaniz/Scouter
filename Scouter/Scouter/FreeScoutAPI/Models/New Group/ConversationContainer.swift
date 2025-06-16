@@ -9,21 +9,21 @@ import Foundation
 
 // swiftlint:disable identifier_name
 struct ConversationContainer: Codable {
-    let container: ConversationsContainer
+    let embedded: EmbeddedConversations
     let page: Page
 
     enum CodingKeys: String, CodingKey {
-        case container = "_embedded"
+        case embedded = "_embedded"
         case page
     }
 
-    init(container: ConversationsContainer, page: Page) {
-        self.container = container
+    init(container: EmbeddedConversations, page: Page) {
+        self.embedded = container
         self.page = page
     }
 }
 
-struct ConversationsContainer: Codable {
+struct EmbeddedConversations: Codable {
     let conversations: [ConversationPreview]
 }
 
@@ -31,14 +31,14 @@ struct ConversationPreview: Codable {
     let id: Int
     let number: Int
     let threadCount: Int?
-    let type: String
+    let type: ConversationType
     let folderId: Int
-    let status: String
-    let state: String
+    let status: ConversationStatus
+    let state: ConversationState
     let subject: String
     let preview: String
     let mailboxID: String?
-    let assignee: ConversationUser?
+    let assignee: Assignee?
     let createdBy: ConversationUser?
     let createdAt: String
     let updatedAt: String
@@ -51,33 +51,6 @@ struct ConversationPreview: Codable {
     let cc: CCType
     let bcc: [String]
     let customer: ConversationUser?
-
-    // This user struct is specific to ConversationPreview as the global User struct does not have a type.
-    struct ConversationUser: Codable {
-        let id: Int
-        let type: String
-        let firstName: String?
-        let lastName: String?
-        let photoUrl: String
-        let email: String
-
-        func name() -> String {
-            var name = ""
-            if let firstName = firstName {
-                name += firstName
-            }
-
-            if let lastName = lastName {
-                name += " " + lastName
-            }
-
-            if name == "" {
-                name += email
-            }
-
-            return name
-        }
-    }
 }
 
 enum CCType: Codable {

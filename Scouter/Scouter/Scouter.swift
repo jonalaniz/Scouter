@@ -54,7 +54,7 @@ class Scouter {
                 apiService.set(folders)
 
                 let container = try await apiService.fetchConversations()
-                let conversations = container.container.conversations
+                let conversations = container.embedded.conversations
 
                 checkForNew(conversations)
                 await filterAndUpdate(folders: folders.container.folders, conversations: conversations)

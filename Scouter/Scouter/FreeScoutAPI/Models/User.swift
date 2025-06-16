@@ -13,7 +13,7 @@ struct User: Codable {
     let role: String
     let firstName: String?
     let lastName: String?
-    let photoUrl: String
+    let photoUrl: String?
     let email: String
 
     func name() -> String {

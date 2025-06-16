@@ -84,6 +84,8 @@ class MenuManager {
 
     private func createConversationMenuItem(for conversation: ConversationPreview) -> NSMenuItem {
         print(conversation.source)
+        print(conversation.createdBy?.photoUrl)
+        print(conversation.closedByUser?.photoUrl)
         let menuItem = NSMenuItem(
             title: conversation.subject.truncated(25),
             action: #selector(openConversation),
@@ -91,9 +93,11 @@ class MenuManager {
         )
         menuItem.target = self
         menuItem.indentationLevel = 1
-        if conversation.createdBy != nil {
-            menuItem.badge = NSMenuItemBadge(string: conversation.createdBy!.name().truncated(18))
+
+        if let name = conversation.createdBy?.name() {
+            menuItem.badge = NSMenuItemBadge(string: name.truncated(18))
         }
+
         menuItem.tag = conversation.id
         menuItem.toolTip = toolTipFor(conversation)
 
