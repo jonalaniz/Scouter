@@ -199,6 +199,14 @@
 			path = Threads;
 			sourceTree = "<group>";
 		};
+		56A68FDB2E001F2D00A603F2 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				56C7C6562C2FFD70001F5173 /* User.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		56C7C65F2C3019B4001F5173 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,7 +284,7 @@
 				56CF0EF12C2D4BBA0061C544 /* Source.swift */,
 				56A68FB62DFFDB6100A603F2 /* Person.swift */,
 				56CF0EF32C2D4BD10061C544 /* TimeFrame.swift */,
-				56C7C6562C2FFD70001F5173 /* User.swift */,
+				56A68FDB2E001F2D00A603F2 /* Users */,
 				56A68FC32E0009B700A603F2 /* Threads */,
 			);
 			path = Models;
