@@ -148,7 +148,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		56A68FB52DFFD64200A603F2 /* New Group */ = {
+		56A68FB52DFFD64200A603F2 /* Conversations */ = {
 			isa = PBXGroup;
 			children = (
 				56A68FA42DFFD32F00A603F2 /* Conversation.swift */,
@@ -158,7 +158,7 @@
 				56A68FA82DFFD32F00A603F2 /* ConversationType.swift */,
 				56A68FA92DFFD32F00A603F2 /* CustomField.swift */,
 			);
-			path = "New Group";
+			path = Conversations;
 			sourceTree = "<group>";
 		};
 		56C7C65F2C3019B4001F5173 /* New Group */ = {
@@ -229,7 +229,7 @@
 		56CF0EF02C2D4BA70061C544 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				56A68FB52DFFD64200A603F2 /* New Group */,
+				56A68FB52DFFD64200A603F2 /* Conversations */,
 				56CF0EFB2C2DB3BE0061C544 /* Folders.swift */,
 				56A68FB12DFFD37300A603F2 /* Timelog.swift */,
 				56CF0EEC2C2D4AFE0061C544 /* MailboxContainer.swift */,
