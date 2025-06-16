@@ -83,9 +83,6 @@ class MenuManager {
     }
 
     private func createConversationMenuItem(for conversation: ConversationPreview) -> NSMenuItem {
-        print(conversation.source)
-        print(conversation.createdBy?.photoUrl)
-        print(conversation.closedByUser?.photoUrl)
         let menuItem = NSMenuItem(
             title: conversation.subject.truncated(25),
             action: #selector(openConversation),

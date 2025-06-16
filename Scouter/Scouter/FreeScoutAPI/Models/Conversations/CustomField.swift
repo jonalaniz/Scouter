@@ -7,6 +7,7 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name
 struct CustomField: Codable {
     let id: Int
     let value: String
