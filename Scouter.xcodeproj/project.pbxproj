@@ -31,6 +31,7 @@
 		56A68FB02DFFD32F00A603F2 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A68FA42DFFD32F00A603F2 /* Conversation.swift */; };
 		56A68FB22DFFD37300A603F2 /* Timelog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A68FB12DFFD37300A603F2 /* Timelog.swift */; };
 		56A68FB42DFFD37700A603F2 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A68FB32DFFD37700A603F2 /* Tag.swift */; };
+		56A68FB72DFFDB6100A603F2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A68FB62DFFDB6100A603F2 /* Person.swift */; };
 		56B598132CFDED500060B42B /* EditableNSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B598122CFDED500060B42B /* EditableNSTextField.swift */; };
 		56BA70232C96A81300E15CEC /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BA70222C96A81300E15CEC /* MenuManager.swift */; };
 		56BA70252C97890900E15CEC /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56BA70242C97890900E15CEC /* alert.mp3 */; };
@@ -76,6 +77,7 @@
 		56A68FA92DFFD32F00A603F2 /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
 		56A68FB12DFFD37300A603F2 /* Timelog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timelog.swift; sourceTree = "<group>"; };
 		56A68FB32DFFD37700A603F2 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		56A68FB62DFFDB6100A603F2 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		56B598122CFDED500060B42B /* EditableNSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNSTextField.swift; sourceTree = "<group>"; };
 		56BA70222C96A81300E15CEC /* MenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
 		56BA70242C97890900E15CEC /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alert.mp3; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				56CF0EEE2C2D4B890061C544 /* Page.swift */,
 				56A68FB32DFFD37700A603F2 /* Tag.swift */,
 				56CF0EF12C2D4BBA0061C544 /* Source.swift */,
+				56A68FB62DFFDB6100A603F2 /* Person.swift */,
 				56CF0EF32C2D4BD10061C544 /* TimeFrame.swift */,
 				56C7C6562C2FFD70001F5173 /* User.swift */,
 			);
@@ -386,6 +389,7 @@
 				5694F7A42C57212D003C168A /* ConfigurationViewController.swift in Sources */,
 				56CF0EEF2C2D4B890061C544 /* Page.swift in Sources */,
 				56CF0EF82C2D502A0061C544 /* Scouter.swift in Sources */,
+				56A68FB72DFFDB6100A603F2 /* Person.swift in Sources */,
 				56FA28432C95F13300280AAA /* Scouter+ConfiguratorDelegate.swift in Sources */,
 				566B3A642CE70FAC0099A6F0 /* DateFormatter+FormatConversationDate.swift in Sources */,
 			);

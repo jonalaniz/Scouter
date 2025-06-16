@@ -10,5 +10,5 @@ import Foundation
 struct TimeFrame: Codable {
     let time: String?
     let friendly: String
-    let latestReplyFrom: String
+    let latestReplyFrom: Person?
 }

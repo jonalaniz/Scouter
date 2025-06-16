@@ -91,7 +91,7 @@ class MenuManager {
         menuItem.target = self
         menuItem.indentationLevel = 1
 
-        if let name = conversation.createdBy?.name() {
+        if let name = conversation.createdBy?.displayName {
             menuItem.badge = NSMenuItemBadge(string: name.truncated(18))
         }
 
@@ -151,7 +151,7 @@ class MenuManager {
 
         guard let assignee = conversation.assignee else { return toolTip }
 
-        return toolTip + " | Assigned to \(assignee.name())"
+        return toolTip + " | Assigned to \(assignee.displayName)"
     }
 
     @objc func openConversation(sender: NSMenuItem) {

@@ -7,7 +7,13 @@
 
 import Foundation
 
+enum SourceType: String, Codable {
+    case email
+    case web
+    case api
+}
+
 struct Source: Codable {
-    let type: String
-    let via: String
+    let type: SourceType
+    let via: Person
 }
