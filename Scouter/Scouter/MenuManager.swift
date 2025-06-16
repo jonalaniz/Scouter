@@ -83,6 +83,7 @@ class MenuManager {
     }
 
     private func createConversationMenuItem(for conversation: ConversationPreview) -> NSMenuItem {
+        print(conversation.source)
         let menuItem = NSMenuItem(
             title: conversation.subject.truncated(25),
             action: #selector(openConversation),

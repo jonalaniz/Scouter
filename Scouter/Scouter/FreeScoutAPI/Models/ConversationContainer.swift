@@ -38,19 +38,46 @@ struct ConversationPreview: Codable {
     let subject: String
     let preview: String
     let mailboxID: String?
-    let assignee: User?
-    let createdBy: User?
+    let assignee: ConversationUser?
+    let createdBy: ConversationUser?
     let createdAt: String
     let updatedAt: String
     let closedBy: Int?
-    let closedByUser: User?
+    let closedByUser: ConversationUser?
     let closedAt: String?
     let userUpdatedAt: String?
     let customerWaitingSince: TimeFrame
     let source: Source
     let cc: CCType
     let bcc: [String]
-    let customer: User?
+    let customer: ConversationUser?
+
+    // This user struct is specific to ConversationPreview as the global User struct does not have a type.
+    struct ConversationUser: Codable {
+        let id: Int
+        let type: String
+        let firstName: String?
+        let lastName: String?
+        let photoUrl: String
+        let email: String
+
+        func name() -> String {
+            var name = ""
+            if let firstName = firstName {
+                name += firstName
+            }
+
+            if let lastName = lastName {
+                name += " " + lastName
+            }
+
+            if name == "" {
+                name += email
+            }
+
+            return name
+        }
+    }
 }
 
 enum CCType: Codable {
