@@ -24,8 +24,7 @@ class Scouter {
         configurator.delegate = self
 
         guard
-            apiService.isConfigured(),
-            let interval = apiService.timeInterval()
+            apiService.isConfigured()
         else {
             menuManager.updateMenu()
             configurator.showPreferencesWindow()
@@ -33,7 +32,6 @@ class Scouter {
         }
 
         menuManager.updateMenu()
-        setFetchTimer(at: interval)
     }
 
     private func setFetchTimer(at interval: FetchInterval) {
